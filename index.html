@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0A1F1C">
+<meta name="application-name" content="اعزاز المیراث">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="اعزاز المیراث">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="icons/icon-192-v2.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon-v2.png">
+<title>اعزاز المیراث</title>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=Noto+Nastaliq+Urdu:wght@400;600&family=Noto+Naskh+Arabic:wght@400;600&display=swap">
+<style>
+/* Layout: a dark hero card with a star-lattice ground opens the page; steps 1-3 sit on a light ground in one column; the result opens with a dark summary card whose segmented bar splits the estate by heir, and each heir row below carries the same colour dot. */
+:root{
+  --bg:#EEF2F1; --surface:#FFFFFF; --fg:#0F1C1A; --muted:#51625E; --line:#DCE4E1;
+  --accent:#0B5E50; --accent-ink:#FFFFFF; --accent-soft:#E1EFEB;
+  --brass:#8A6A1F; --warn:#8A5200; --warn-soft:#F6E8CF;
+  --ink:#0A1F1C; --ink-fg:#EAF3F0; --ink-muted:#9DB5AF; --ink-line:#1F3A35; --gold:#D4AF5F;
+  --c0:#17A58A; --c1:#C9A24B; --c2:#2F7F8F; --c3:#7BC8B6; --c4:#B5733A; --c5:#8FA3AD;
+  --shadow:0 1px 2px rgba(10,31,28,.06),0 10px 28px rgba(10,31,28,.07);
+  --display:'Bricolage Grotesque',system-ui,sans-serif;
+  --body:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --urdu:'Noto Nastaliq Urdu','Jameel Noori Nastaleeq','Noto Naskh Arabic',serif;
+  --arabic:'Noto Naskh Arabic','Geeza Pro','Segoe UI',serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#07100F; --surface:#0F1B19; --fg:#E6F0ED; --muted:#8FA6A0; --line:#1D2F2B;
+    --accent:#46C2A5; --accent-ink:#06241D; --accent-soft:#12302A;
+    --brass:#D4AF5F; --warn:#E3A94B; --warn-soft:#3A2D14;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 28px rgba(0,0,0,.35);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#07100F; --surface:#0F1B19; --fg:#E6F0ED; --muted:#8FA6A0; --line:#1D2F2B;
+  --accent:#46C2A5; --accent-ink:#06241D; --accent-soft:#12302A;
+  --brass:#D4AF5F; --warn:#E3A94B; --warn-soft:#3A2D14;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 28px rgba(0,0,0,.35);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{
+  background:var(--bg); color:var(--fg); font-family:var(--body); font-size:15px; line-height:1.5;
+  padding-block:16px 48px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+}
+#app{max-width:720px;margin:0 auto;display:grid;gap:34px}
+#app.ur{font-family:var(--urdu),var(--body);line-height:2.1;font-size:14px}
+#app.ar{font-family:var(--arabic),var(--body);line-height:1.9;font-size:15px}
+#app.ur input,#app.ur .frac,#app.ur .amt,#app.ur .val,#app.ur dd,#app.ar input,#app.ar .frac,#app.ar .amt,#app.ar .val,#app.ar dd,.seg.lang button[data-v="en"],.seg.lang button[data-v="ro"]{font-family:var(--body)}
+#app.ur *,#app.ar *{letter-spacing:normal!important;text-transform:none!important}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+
+/* hero */
+.hero{position:relative;overflow:hidden;isolation:isolate;border-radius:22px;background:var(--ink);color:var(--ink-fg);border:1px solid var(--ink-line);padding:18px 20px 30px;display:grid;grid-template-columns:1fr auto;grid-template-areas:"k l" "t t";gap:30px 12px;align-items:center}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background-image:linear-gradient(180deg,rgba(10,31,28,.15),#0A1F1C 92%),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cpath d='M62 32L44.9 37.4 53.2 53.2 37.4 44.9 32 62 26.6 44.9 10.8 53.2 19.1 37.4 2 32 19.1 26.6 10.8 10.8 26.6 19.1 32 2 37.4 19.1 53.2 10.8 44.9 26.6Z' fill='none' stroke='%23D4AF5F' stroke-opacity='.16' stroke-width='1'/%3E%3C/svg%3E");background-size:auto,64px 64px}
+.hero::after{content:"";position:absolute;inset-inline:22px;bottom:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.75}
+.kicker{grid-area:k;color:var(--gold);font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600}
+.hero>div:not(.seg){grid-area:t}
+.hero>.seg{grid-area:l}
+h1{font-family:var(--display);font-size:clamp(32px,9vw,46px);line-height:1.05;margin:0;letter-spacing:-.02em;font-weight:700;color:var(--ink-fg);text-wrap:balance}
+#app.ur h1{font-family:var(--urdu);font-size:30px;line-height:1.7;font-weight:600}
+#app.ar h1{font-family:var(--arabic);font-size:32px;line-height:1.5;font-weight:700}
+.sub{margin:12px 0 0;color:var(--ink-muted);max-width:44ch}
+
+.seg{display:inline-grid;grid-auto-flow:column;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--surface)}
+.seg button{padding:8px 18px;min-height:46px;background:transparent;border:0;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);font-weight:600}
+.seg.lang{direction:ltr;background:rgba(255,255,255,.06);border-color:var(--ink-line)}
+.seg.lang button{padding:6px 11px;min-height:38px;font-size:13px;color:var(--ink-fg)}
+.seg.lang button[aria-pressed="true"]{background:var(--gold);color:#1A1405}
+
+.demo{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;background:var(--warn-soft);color:var(--warn);border-radius:12px;padding:10px 14px}
+.link{background:none;border:0;padding:6px 0;text-decoration:underline;cursor:pointer;color:inherit;font-weight:600}
+
+section h2{display:flex;align-items:center;gap:12px;margin:0 0 14px;font-family:var(--display);font-size:20px;font-weight:600;letter-spacing:-.01em}
+#app.ur section h2,#app.ar section h2{font-family:inherit;font-size:18px}
+section h2 b{display:inline-grid;place-items:center;min-width:28px;height:28px;border-radius:8px;border:1px solid var(--brass);color:var(--brass);font-family:var(--body);font-size:13px;font-weight:600;line-height:1}
+
+.fields{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
+.fld{display:grid;gap:5px;min-width:0}
+.fld label{color:var(--muted);font-size:13px}
+.fld input{width:100%;min-height:52px;padding:0 14px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--fg);font:inherit;font-size:17px;font-variant-numeric:tabular-nums;direction:ltr;text-align:start;box-shadow:var(--shadow)}
+.fld input:focus{outline:0;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.hint{color:var(--muted);font-size:13px;min-height:1.4em;font-variant-numeric:tabular-nums}
+
+.group{margin-top:18px}
+.group h3{margin:0 0 8px;font-size:12px;font-weight:600;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+.heirs{border:1px solid var(--line);border-radius:16px;background:var(--surface);overflow:hidden;box-shadow:var(--shadow)}
+.hrow{position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:58px;padding:5px 14px;border-bottom:1px solid var(--line)}
+.hrow:last-child{border-bottom:0}
+.hrow.on::before{content:"";position:absolute;inset-block:14px;inset-inline-start:0;width:3px;border-radius:3px;background:var(--brass)}
+.hrow.on .hlabel{font-weight:600}
+.hlabel{min-width:0}
+.stepper{display:inline-flex;align-items:center;gap:4px;direction:ltr;flex:none}
+.stepper button{width:42px;height:42px;border:1px solid var(--line);border-radius:12px;background:var(--bg);font-size:20px;line-height:1;cursor:pointer}
+.stepper button:active{background:var(--accent-soft);border-color:var(--accent)}
+.val{min-width:2.4ch;text-align:center;font-weight:600;font-size:17px;font-variant-numeric:tabular-nums}
+details.far{margin-top:18px}
+details summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font-size:12px;font-weight:600;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+details .hint{margin:0 0 8px}
+
+/* result */
+#result{display:grid;gap:18px}
+.sum{position:relative;overflow:hidden;background:var(--ink);color:var(--ink-fg);border:1px solid var(--ink-line);border-radius:22px;padding:24px 20px 18px;box-shadow:var(--shadow);display:grid;gap:16px}
+.sum::before{content:"";position:absolute;inset-inline:22px;top:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.sum small{color:var(--gold);font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+.sum .big{font-family:var(--display);font-size:clamp(32px,9vw,46px);line-height:1.1;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums;direction:ltr;text-align:start;color:var(--ink-fg)}
+.seg-bar{display:flex;gap:3px;height:14px}
+.seg-bar i{display:block;min-width:4px;border-radius:4px}
+.calc{margin:0;display:grid;gap:0;font-size:14px}
+.calc div{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-top:1px solid var(--ink-line)}
+.calc dt{margin:0;color:var(--ink-muted)}
+.calc dd{margin:0;color:var(--ink-fg);font-variant-numeric:tabular-nums;direction:ltr}
+.warnbox{background:var(--warn-soft);color:var(--warn);border-radius:12px;padding:10px 14px;font-size:14px}
+.parts{color:var(--muted);margin:0}
+
+.rows{list-style:none;margin:0;padding:0;border:1px solid var(--line);border-radius:18px;background:var(--surface);overflow:hidden;box-shadow:var(--shadow)}
+.row{padding:16px;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:0}
+.rtop{display:flex;justify-content:space-between;gap:12px;align-items:center}
+.who{display:flex;align-items:center;gap:10px;font-weight:600;min-width:0}
+.dot{display:inline-block;width:10px;height:10px;border-radius:3px;flex:none}
+.cnt{color:var(--muted);font-weight:400}
+.frac{font-family:var(--display);font-size:24px;font-weight:700;color:var(--brass);font-variant-numeric:tabular-nums;direction:ltr}
+.bar{height:6px;border-radius:3px;background:var(--accent-soft);margin:10px 0 8px;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:3px}
+@media (prefers-reduced-motion:no-preference){.bar i{transition:width .3s ease}}
+.rbot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:14px;color:var(--muted)}
+.amt{color:var(--fg);font-weight:500;font-variant-numeric:tabular-nums;direction:ltr}
+.amt small{color:var(--muted);font-weight:400}
+.tag{border:1px solid var(--line);border-radius:999px;padding:0 9px;font-size:12px;white-space:nowrap}
+
+.list{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:var(--shadow)}
+.list h3{margin:0 0 8px;font-size:14px}
+.list ul{margin:0;padding-inline-start:20px;display:grid;gap:6px;color:var(--muted);font-size:14px}
+.list ul b{color:var(--fg);font-weight:600}
+.actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.btn{min-height:48px;padding:0 20px;border-radius:12px;border:0;background:var(--accent);color:var(--accent-ink);font-weight:600;cursor:pointer}
+#copybox{width:100%;min-height:120px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--fg);padding:10px;font:inherit;font-size:14px;direction:ltr}
+.foot{color:var(--muted);font-size:13px;display:grid;gap:12px}
+.foot p{margin:0}
+.foot .dev{background:var(--ink);color:var(--ink-fg);border:1px solid var(--ink-line);border-radius:16px;padding:16px;line-height:1.8}
+.foot .dev b{color:var(--gold);font-weight:600}
+.foot .dev bdi{direction:ltr;user-select:text}
+.btn.alt{background:transparent;color:inherit;border:1.5px solid currentColor}
+.foot a{color:inherit}
+@media print{
+  .hero .lang,.demo,section:not(#result),details.far,.actions,#copybox{display:none!important}
+  body{background:#fff!important}
+  .hero{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .row,.list,.sum{break-inside:avoid}
+  .sum .big{color:#000!important}
+}
+</style>
+</head>
+<body>
+
+<div id="app"></div>
+
+<script>
+/*CALC-START*/
+const KEYS=['husband','wife','son','dau','gson','gdau','father','mother','gfather','gmotherP','gmotherM','fbro','fsis','cbro','csis','ubro','usis','fbroSon','cbroSon','funcle','cuncle','funcleSon'];
+const gcd=(a,b)=>b?gcd(b,a%b):Math.abs(a);
+const fr=(n,d=1)=>{const g=gcd(n,d)||1;return{n:n/g,d:d/g};};
+const add=(a,b)=>fr(a.n*b.d+b.n*a.d,a.d*b.d);
+const sub=(a,b)=>fr(a.n*b.d-b.n*a.d,a.d*b.d);
+const mul=(a,b)=>fr(a.n*b.n,a.d*b.d);
+const dv=(a,b)=>fr(a.n*b.d,a.d*b.n);
+const ZERO=fr(0,1),ONE=fr(1,1);
+const fs=f=>f.n+'/'+f.d;
+
+function calc(n0,sex){
+  const n={...n0};
+  if(sex==='M')n.husband=0;else n.wife=0;
+  const P=k=>(n[k]||0)>0;
+  const blocked={};
+  const B=(ks,why)=>ks.forEach(k=>{if(P(k)&&!blocked[k])blocked[k]=why;});
+  const A=k=>P(k)&&!blocked[k];
+  const c=k=>A(k)?n[k]:0;
+  const notes=[];
+  const sibs=['fbro','fsis','cbro','csis','ubro','usis'];
+  const remote=['fbroSon','cbroSon','funcle','cuncle','funcleSon'];
+  const desc=P('son')||P('dau')||P('gson')||P('gdau');
+  const maleDesc=P('son')||P('gson');
+  const femaleDesc=P('dau')||P('gdau');
+  const sibTotal=sibs.reduce((s,k)=>s+(n[k]||0),0);
+
+  /* hajb: who is excluded by whom */
+  if(P('son'))B(['gson','gdau'],'son');
+  if(n.dau>=2&&!P('gson'))B(['gdau'],'twoDau');
+  if(maleDesc)B(['fbro','fsis','cbro','csis',...remote],'maleDesc');
+  if(desc)B(['ubro','usis'],'desc');
+  if(P('father'))B(['gfather','gmotherP',...sibs,...remote],'father');
+  if(!P('father')&&P('gfather'))B([...sibs,...remote],'gfather');
+  if(P('mother'))B(['gmotherP','gmotherM'],'mother');
+  const fsisMag=A('fsis')&&!A('fbro')&&femaleDesc;
+  if(A('fbro'))B(['cbro','csis'],'fbro');
+  if(fsisMag)B(['cbro','csis'],'fsisMag');
+  if(A('fsis')&&!A('fbro')&&!fsisMag&&n.fsis>=2&&!A('cbro'))B(['csis'],'twoFsis');
+
+  /* ashab-ul-furud */
+  const F={},kind={};
+  const setF=(k,f)=>{F[k]=f;kind[k]='f';};
+  if(sex==='F'&&A('husband')){const f=desc?fr(1,4):fr(1,2);setF('husband',f);notes.push({c:'spouse',p:{who:'husband',f:fs(f),desc}});}
+  if(sex==='M'&&A('wife')){const f=desc?fr(1,8):fr(1,4);setF('wife',f);notes.push({c:'spouse',p:{who:'wife',f:fs(f),desc}});}
+  if(A('mother')){
+    if(desc||sibTotal>=2){setF('mother',fr(1,6));notes.push({c:'mother6',p:{why:desc?'desc':'sibs'}});}
+    else{
+      const alive=KEYS.filter(A);
+      const onlyCore=alive.every(k=>['husband','wife','father','mother'].includes(k));
+      if(onlyCore&&A('father')&&(A('husband')||A('wife'))){
+        const sp=F.husband||F.wife;
+        setF('mother',mul(sub(ONE,sp),fr(1,3)));
+        notes.push({c:'umar'});
+      }else setF('mother',fr(1,3));
+    }
+  }
+  const fa=A('father')?'father':(A('gfather')?'gfather':null);
+  if(fa){
+    if(maleDesc){setF(fa,fr(1,6));notes.push({c:'fa6'});}
+    else if(femaleDesc){setF(fa,fr(1,6));notes.push({c:'faA'});}
+    else notes.push({c:'faO'});
+  }
+  if(A('dau')&&!A('son'))setF('dau',n.dau===1?fr(1,2):fr(2,3));
+  if(A('gdau')&&!A('gson')){
+    if(n.dau===0)setF('gdau',n.gdau===1?fr(1,2):fr(2,3));
+    else if(n.dau===1)setF('gdau',fr(1,6));
+  }
+  if(A('fsis')&&!A('fbro')&&!fsisMag)setF('fsis',n.fsis===1?fr(1,2):fr(2,3));
+  const csisMag=A('csis')&&!A('cbro')&&!A('fsis')&&femaleDesc;
+  if(A('csis')&&!A('cbro')&&!csisMag){
+    if(A('fsis')){if(n.fsis===1)setF('csis',fr(1,6));}
+    else setF('csis',n.csis===1?fr(1,2):fr(2,3));
+  }
+  const uc=c('ubro')+c('usis');
+  if(uc>0){
+    const tot=uc===1?fr(1,6):fr(1,3);
+    if(c('ubro'))setF('ubro',mul(tot,fr(c('ubro'),uc)));
+    if(c('usis'))setF('usis',mul(tot,fr(c('usis'),uc)));
+  }
+  const gm=['gmotherP','gmotherM'].filter(A);
+  gm.forEach(k=>setF(k,fr(1,6*gm.length)));
+
+  let sum=ZERO;for(const k in F)sum=add(sum,F[k]);
+  const R=sub(ONE,sum);
+
+  /* asaba: the first group in order takes the residue */
+  let units=[];
+  if(A('son'))units=[['son',2],['dau',1]];
+  else if(A('gson'))units=[['gson',2],['gdau',1]];
+  else if(fa&&!maleDesc)units=[[fa,1]];
+  else if(A('fbro'))units=[['fbro',2],['fsis',1]];
+  else if(fsisMag)units=[['fsis',1]];
+  else if(A('cbro'))units=[['cbro',2],['csis',1]];
+  else if(csisMag)units=[['csis',1]];
+  else{for(const k of remote){if(A(k)){units=[[k,1]];break;}}}
+  units=units.filter(([k])=>A(k));
+
+  const final={},how={};
+  if(sum.n>sum.d){
+    for(const k in F){final[k]=dv(F[k],sum);how[k]='f';}
+    notes.push({c:'aul',p:{f:fs(sum)}});
+    units.forEach(([k])=>{if(!final[k])blocked[k]='noResidue';});
+  }else{
+    for(const k in F){final[k]=F[k];how[k]='f';}
+    if(units.length){
+      if(R.n>0){
+        const tu=units.reduce((s,[k,u])=>s+n[k]*u,0);
+        units.forEach(([k,u])=>{
+          final[k]=add(final[k]||ZERO,mul(R,fr(n[k]*u,tu)));
+          how[k]=F[k]?'fa':'a';
+        });
+      }else units.forEach(([k])=>{if(!final[k])blocked[k]='noResidue';});
+    }else if(R.n>0){
+      const sp=['husband','wife'].filter(k=>F[k]);
+      const others=Object.keys(F).filter(k=>!sp.includes(k));
+      if(others.length){
+        let os=ZERO;others.forEach(k=>{os=add(os,F[k]);});
+        let ss=ZERO;sp.forEach(k=>{ss=add(ss,F[k]);});
+        const pool=sub(ONE,ss);
+        others.forEach(k=>{final[k]=mul(dv(F[k],os),pool);how[k]='r';});
+        notes.push({c:'radd'});
+      }else if(sp.length){
+        final[sp[0]]=ONE;how[sp[0]]='r';notes.push({c:'raddSpouse'});
+      }
+    }
+  }
+  KEYS.forEach(k=>{
+    if(A(k)&&!(final[k]&&final[k].n>0)&&!blocked[k])blocked[k]=units.length?'nearer':'noResidue';
+  });
+  const rows=KEYS.filter(k=>final[k]&&final[k].n>0).map(k=>({k,count:n[k],share:final[k],how:how[k]}));
+  const N=rows.reduce((l,r)=>l/gcd(l,r.share.d)*r.share.d,1);
+  rows.forEach(r=>{r.parts=r.share.n*(N/r.share.d);});
+  const blockedList=KEYS.filter(k=>P(k)&&blocked[k]).map(k=>({k,why:blocked[k]}));
+  const anyHeir=KEYS.some(P);
+  if(!rows.length)notes.push({c:'noHeirs'});
+  return{rows,N,blocked:blockedList,notes,empty:!rows.length,anyHeir};
+}
+/*CALC-END*/
+
+const X={
+en:{share:'Share on WhatsApp',print:'Print / PDF',tashihT:'Tashih (share per person)',tashih:T=>`Corrected total: ${T} parts. Each person's share:`,priv:'Privacy'},
+ro:{share:'WhatsApp par bhejein',print:'Print / PDF',tashihT:'Tashih (har fard ka hissa)',tashih:T=>`Tashih ke baad kul ${T} hissay. Har fard ka hissa:`,priv:'Raazdari'},
+ur:{share:'واٹس ایپ پر بھیجیں',print:'پرنٹ / PDF',tashihT:'تصحیح (ہر فرد کا حصہ)',tashih:T=>`تصحیح کے بعد کل ${T} حصے۔ ہر فرد کا حصہ:`,priv:'رازداری'},
+ar:{share:'مشاركة عبر واتساب',print:'طباعة / PDF',tashihT:'التصحيح (نصيب كل فرد)',tashih:T=>`بعد التصحيح: المجموع ${T} سهمًا. نصيب كل فرد:`,priv:'الخصوصية'}};
+const T={
+ro:{dir:'ltr',htmlLang:'ur-Latn',name:"I'zaz al-Mirath",sub:'Fiqh-e-Hanafi ke mutabiq hissay',
+ demo:'Ye ek misaal hai. Apni raqam aur waris daal kar nateeja dekhein.',reset:'Khali karein',
+ s1:'Marhoom',male:'Mard',female:'Aurat',
+ s2:'Tarka',estate:'Kul tarka (Rs)',funeral:'Tajheez o takfeen ka kharch',debts:'Qarz',will:'Wasiyyat (agar ho)',
+ s3:'Waris',
+ g:{spouse:'Zawj',children:'Aulad',parents:'Walidain aur ajdad',sibs:'Bhai behan',far:'Door ke rishtay (asaba)'},
+ farHint:'Ye tab hissa paate hain jab upar ke qareebi waris na hon.',
+ res:'Nateeja',dist:'Waris mein taqseem hone wali raqam',
+ bTotal:'Kul tarka',bFuneral:'Tajheez o takfeen',bDebts:'Qarz',bWill:'Wasiyyat (hadd: tihayi)',bNet:'Taqseem ke liye',
+ parts:n=>`Tarka ${n} hissay mein banta gaya.`,unit:'hissay',each:'har ek',
+ how:{f:'Fard',a:'Asaba',fa:'Fard + Asaba',r:'Radd'},
+ blockedT:'Jinhein hissa nahi milega',notesT:'Hisaab ke qawaid',limitsT:'Is app ki hadood',
+ limits:'Ye app in surton ko shamil nahi karti: pait ka bachcha (hamal), lapata shakhs, parpota jaisay door ke ajdad aur aulad, dhawil-arham, aur wo surat jis mein koi waris qatl ya deen ke farq se mehroom ho. Aisi surat mein aalim se rujoo karein.',
+ disc:'Ye hisaab sirf andaza hai. Asal taqseem se pehle kisi mustanad mufti ya aalim se tasdeeq zaroor karwayein.',
+ copy:'Nateeja copy karein',copied:'Copy ho gaya',copyFail:'Copy nahi hua. Neeche se khud copy karein.',
+ willWarn:'Wasiyyat tihayi se zyada thi, isliye sirf tihayi tak li gayi.',
+ needEstate:'Raqam dekhne ke liye kul tarka daalein.',minus:'Kam karein',plus:'Zyada karein',
+ k:{husband:'Shohar',wife:'Biwi (biwiyan)',son:'Beta',dau:'Beti',gson:'Pota (bete ka beta)',gdau:'Poti (bete ki beti)',father:'Walid',mother:'Walida',gfather:'Dada',gmotherP:'Dadi (walid ki maa)',gmotherM:'Nani (walida ki maa)',fbro:'Haqiqi bhai',fsis:'Haqiqi behan',cbro:'Aillati bhai (sirf baap shareek)',csis:'Aillati behan (sirf baap shareek)',ubro:'Akhyafi bhai (sirf maa shareek)',usis:'Akhyafi behan (sirf maa shareek)',fbroSon:'Haqiqi bhai ka beta',cbroSon:'Aillati bhai ka beta',funcle:'Haqiqi chacha',cuncle:'Aillati chacha (baap ka aillati bhai)',funcleSon:'Haqiqi chacha ka beta'},
+ why:{son:'beta maujood hai',maleDesc:'beta ya pota maujood hai',desc:'aulad maujood hai',father:'walid maujood hain',gfather:'dada maujood hain (Imam Abu Hanifa ke qaul par)',mother:'walida maujood hain',twoDau:'do ya zyada betiyan maujood hain',fbro:'haqiqi bhai maujood hai',fsisMag:'haqiqi behan betiyon ke saath asaba ban gayi',twoFsis:'do haqiqi behnen 2/3 le chuki hain',nearer:'qareebi asaba maujood hain',noResidue:'fard hisson ke baad kuch nahi bacha'},
+ n:{
+  spouse:p=>p.who==='husband'?`Shohar ka hissa ${p.f}: ${p.desc?'marhooma ki aulad maujood hai':'marhooma ki koi aulad nahi'}.`:`Biwi (biwiyon) ka kul hissa ${p.f}: ${p.desc?'marhoom ki aulad maujood hai':'marhoom ki koi aulad nahi'}.`,
+  mother6:p=>p.why==='desc'?'Walida ko 1/6: marhoom ki aulad maujood hai.':'Walida ko 1/6: do ya zyada bhai behan maujood hain (chahe unhein hissa na milay).',
+  umar:()=>'Walida ko zawj ka hissa nikalne ke baad baqi ka 1/3, kyunke sirf walidain aur zawj waris hain.',
+  fa6:()=>'Walid (ya dada) ko 1/6: beta ya pota maujood hai.',
+  faA:()=>'Walid (ya dada) ko 1/6 aur bacha hua bhi asaba ke tor par, kyunke sirf beti ya poti hai.',
+  faO:()=>'Walid (ya dada) asaba hain: fard hisson ke baad baqi sab unhein milta hai.',
+  aul:p=>`Hisson ka majmua ${p.f} (1 se zyada) tha, isliye "aul" ke tahat sab hissay yaksan nisbat se kam kiye gaye.`,
+  radd:()=>'Hissay poore na honay se bachi hui raqam zawj ke ilawa baaqi fard walon ko unke hissay ke tanasub se wapas (radd) ki gayi.',
+  raddSpouse:()=>'Koi aur waris na hone se baqi raqam bhi zawj ko di gayi.',
+  noHeirs:()=>'Koi waris nahi chuna gaya. Is surat mein dhawil-arham ya baitul-mal ka masla hota hai, kisi aalim se poochein.'
+ }},
+en:{dir:'ltr',htmlLang:'en',name:"I'zaz al-Mirath",sub:'Shares according to Hanafi fiqh',
+ demo:'This is an example. Enter your own amounts and heirs to see the result.',reset:'Clear all',
+ s1:'Deceased',male:'Male',female:'Female',
+ s2:'Estate',estate:'Total estate (Rs)',funeral:'Funeral and burial costs',debts:'Debts',will:'Will (if any)',
+ s3:'Heirs',
+ g:{spouse:'Spouse',children:'Children',parents:'Parents and grandparents',sibs:'Siblings',far:'Distant male relatives (asaba)'},
+ farHint:'They inherit only when none of the closer heirs above exist.',
+ res:'Result',dist:'Amount to be divided among heirs',
+ bTotal:'Total estate',bFuneral:'Funeral and burial',bDebts:'Debts',bWill:'Will (limit: one third)',bNet:'To divide',
+ parts:n=>`The estate is divided into ${n} parts.`,unit:'parts',each:'each',
+ how:{f:'Fixed share',a:'Residuary',fa:'Fixed + residuary',r:'Radd'},
+ blockedT:'Heirs who receive nothing',notesT:'How it was worked out',limitsT:'What this app does not cover',
+ limits:'Not covered: an unborn child, a missing person, distant ancestors and descendants such as a great-grandson, distant kin (dhawil-arham), and an heir barred by homicide or difference of religion. Ask a scholar in such cases.',
+ disc:'This is an estimate only. Please confirm with a qualified mufti or scholar before dividing the estate.',
+ copy:'Copy result',copied:'Copied',copyFail:'Could not copy. Copy from the box below.',
+ willWarn:'The will was more than one third, so only one third was used.',
+ needEstate:'Enter the total estate to see amounts.',minus:'Decrease',plus:'Increase',
+ k:{husband:'Husband',wife:'Wife (wives)',son:'Son',dau:'Daughter',gson:"Son's son",gdau:"Son's daughter",father:'Father',mother:'Mother',gfather:'Paternal grandfather',gmotherP:"Paternal grandmother (father's mother)",gmotherM:"Maternal grandmother (mother's mother)",fbro:'Full brother',fsis:'Full sister',cbro:'Half-brother (same father)',csis:'Half-sister (same father)',ubro:'Half-brother (same mother)',usis:'Half-sister (same mother)',fbroSon:"Full brother's son",cbroSon:"Half-brother's son (same father)",funcle:'Full paternal uncle',cuncle:"Paternal uncle (father's half-brother)",funcleSon:"Full paternal uncle's son"},
+ why:{son:'a son exists',maleDesc:'a son or grandson exists',desc:'a child exists',father:'the father exists',gfather:"the grandfather exists (Imam Abu Hanifa's view)",mother:'the mother exists',twoDau:'two or more daughters exist',fbro:'a full brother exists',fsisMag:'the full sister became a residuary heir with the daughters',twoFsis:'two full sisters already took 2/3',nearer:'a closer residuary heir exists',noResidue:'nothing was left after the fixed shares'},
+ n:{
+  spouse:p=>p.who==='husband'?`Husband's share ${p.f}: ${p.desc?'the deceased has children':'the deceased has no children'}.`:`Wife's (wives') total share ${p.f}: ${p.desc?'the deceased has children':'the deceased has no children'}.`,
+  mother6:p=>p.why==='desc'?'Mother gets 1/6: the deceased has children.':'Mother gets 1/6: two or more siblings exist (even if they receive nothing).',
+  umar:()=>"Mother gets 1/3 of what remains after the spouse's share, because only the parents and a spouse are heirs.",
+  fa6:()=>'Father (or grandfather) gets 1/6: a son or grandson exists.',
+  faA:()=>'Father (or grandfather) gets 1/6 plus the remainder as residuary heir, because the descendants are only female.',
+  faO:()=>'Father (or grandfather) is the residuary heir and takes what remains after the fixed shares.',
+  aul:p=>`The fixed shares add up to ${p.f} (more than 1), so every share was reduced in the same proportion (aul).`,
+  radd:()=>'The leftover was returned (radd) to the fixed-share heirs other than the spouse, in proportion to their shares.',
+  raddSpouse:()=>'With no other heir, the remainder also went to the spouse.',
+  noHeirs:()=>'No heirs selected. In this case distant kin or the public treasury may inherit; ask a scholar.'
+ }},
+ar:{dir:'rtl',htmlLang:'ar',name:'إعزاز الميراث',sub:'وفق المذهب الحنفي',
+ demo:'هذا مثال. أدخل المبلغ والورثة لترى النتيجة.',reset:'تفريغ الكل',
+ s1:'المتوفى',male:'ذكر',female:'أنثى',
+ s2:'التركة',estate:'إجمالي التركة (روبية)',funeral:'نفقات التجهيز والتكفين',debts:'الديون',will:'الوصية (إن وجدت)',
+ s3:'الورثة',
+ g:{spouse:'الزوجان',children:'الأولاد',parents:'الأبوان والأجداد',sibs:'الإخوة والأخوات',far:'العصبات الأبعد'},
+ farHint:'لا يرثون إلا إذا لم يوجد الورثة الأقرب أعلاه.',
+ res:'النتيجة',dist:'المبلغ القابل للتقسيم على الورثة',
+ bTotal:'إجمالي التركة',bFuneral:'التجهيز والتكفين',bDebts:'الديون',bWill:'الوصية (الحد: الثلث)',bNet:'للتقسيم',
+ parts:n=>`قُسمت التركة إلى ${n} سهمًا.`,unit:'أسهم',each:'للفرد',
+ how:{f:'فرض',a:'تعصيب',fa:'فرض + تعصيب',r:'ردّ'},
+ blockedT:'من لا يرث',notesT:'قواعد الحساب',limitsT:'حدود هذا التطبيق',
+ limits:'لا يشمل هذا التطبيق: الحمل، والمفقود، والأجداد والأولاد الأبعد كابن ابن الابن، وذوي الأرحام، ومن مُنع من الإرث بالقتل أو باختلاف الدين. في هذه الحالات راجع عالمًا.',
+ disc:'هذا الحساب تقديري فقط. تأكد من مفتٍ أو عالم معتمد قبل التقسيم الفعلي.',
+ copy:'نسخ النتيجة',copied:'تم النسخ',copyFail:'تعذّر النسخ. انسخ من الأسفل يدويًا.',
+ willWarn:'الوصية أكثر من الثلث، فاعتُمد الثلث فقط.',
+ needEstate:'أدخل إجمالي التركة لعرض المبالغ.',minus:'إنقاص',plus:'زيادة',
+ k:{husband:'الزوج',wife:'الزوجة (الزوجات)',son:'الابن',dau:'البنت',gson:'ابن الابن',gdau:'بنت الابن',father:'الأب',mother:'الأم',gfather:'الجد',gmotherP:'الجدة (أم الأب)',gmotherM:'الجدة (أم الأم)',fbro:'الأخ الشقيق',fsis:'الأخت الشقيقة',cbro:'الأخ لأب',csis:'الأخت لأب',ubro:'الأخ لأم',usis:'الأخت لأم',fbroSon:'ابن الأخ الشقيق',cbroSon:'ابن الأخ لأب',funcle:'العم الشقيق',cuncle:'العم لأب',funcleSon:'ابن العم الشقيق'},
+ why:{son:'لوجود الابن',maleDesc:'لوجود الابن أو ابن الابن',desc:'لوجود الفرع الوارث',father:'لوجود الأب',gfather:'لوجود الجد (على قول الإمام أبي حنيفة)',mother:'لوجود الأم',twoDau:'لوجود بنتين فأكثر',fbro:'لوجود الأخ الشقيق',fsisMag:'لأن الأخت الشقيقة صارت عصبة مع البنات',twoFsis:'لأن الأختين الشقيقتين أخذتا الثلثين',nearer:'لوجود عصبة أقرب',noResidue:'لأنه لم يبقَ شيء بعد الفروض'},
+ n:{
+  spouse:p=>p.who==='husband'?`نصيب الزوج ${p.f}: ${p.desc?'لوجود فرع وارث للمتوفاة':'لعدم وجود فرع وارث للمتوفاة'}.`:`نصيب الزوجة (الزوجات) ${p.f}: ${p.desc?'لوجود فرع وارث للمتوفى':'لعدم وجود فرع وارث للمتوفى'}.`,
+  mother6:p=>p.why==='desc'?'للأم السدس: لوجود فرع وارث للمتوفى.':'للأم السدس: لوجود اثنين فأكثر من الإخوة والأخوات (وإن حُجبوا).',
+  umar:()=>'للأم ثلث الباقي بعد نصيب الزوج أو الزوجة، لأن الورثة هم الأبوان وأحد الزوجين فقط.',
+  fa6:()=>'للأب (أو الجد) السدس: لوجود الابن أو ابن الابن.',
+  faA:()=>'للأب (أو الجد) السدس مع الباقي تعصيبًا، لأن الفرع الوارث إناث فقط.',
+  faO:()=>'الأب (أو الجد) عصبة: يأخذ الباقي بعد أصحاب الفروض.',
+  aul:p=>`مجموع الفروض ${p.f} (أكثر من واحد)، فنُقصت الحصص بنسبة واحدة وهو «العول».`,
+  radd:()=>'ما بقي بعد الفروض رُدّ على أصحاب الفروض غير الزوجين بنسبة فروضهم.',
+  raddSpouse:()=>'لعدم وجود وارث آخر رُدّ الباقي على الزوج أو الزوجة.',
+  noHeirs:()=>'لم يُختر أي وارث. في هذه الحالة يُنظر في ذوي الأرحام أو بيت المال، فاسأل عالمًا.'
+ }},
+ur:{dir:'rtl',htmlLang:'ur',name:'اعزاز المیراث',sub:'فقہ حنفی کے مطابق حصے',
+ demo:'یہ ایک مثال ہے۔ اپنی رقم اور وارث درج کر کے نتیجہ دیکھیں۔',reset:'خالی کریں',
+ s1:'مرحوم',male:'مرد',female:'عورت',
+ s2:'ترکہ',estate:'کل ترکہ (روپے)',funeral:'تجہیز و تکفین کا خرچ',debts:'قرض',will:'وصیت (اگر ہو)',
+ s3:'وارث',
+ g:{spouse:'زوجین',children:'اولاد',parents:'والدین اور اجداد',sibs:'بھائی بہن',far:'دور کے رشتے (عصبہ)'},
+ farHint:'یہ تب حصہ پاتے ہیں جب اوپر کے قریبی وارث نہ ہوں۔',
+ res:'نتیجہ',dist:'وارثوں میں تقسیم ہونے والی رقم',
+ bTotal:'کل ترکہ',bFuneral:'تجہیز و تکفین',bDebts:'قرض',bWill:'وصیت (حد: ایک تہائی)',bNet:'تقسیم کے لیے',
+ parts:n=>`ترکہ ${n} حصوں میں تقسیم ہوا۔`,unit:'حصے',each:'فی کس',
+ how:{f:'فرض',a:'عصبہ',fa:'فرض + عصبہ',r:'ردّ'},
+ blockedT:'جنہیں حصہ نہیں ملے گا',notesT:'حساب کے اصول',limitsT:'اس ایپ کی حدود',
+ limits:'یہ ایپ ان صورتوں کو شامل نہیں کرتی: پیٹ کا بچہ (حمل)، لاپتہ شخص، پرپوتا جیسے دور کے اجداد اور اولاد، ذوی الارحام، اور وہ صورت جس میں کوئی وارث قتل یا دین کے فرق سے محروم ہو۔ ایسی صورت میں عالم سے رجوع کریں۔',
+ disc:'یہ حساب صرف اندازہ ہے۔ اصل تقسیم سے پہلے کسی مستند مفتی یا عالم سے تصدیق ضرور کروائیں۔',
+ copy:'نتیجہ کاپی کریں',copied:'کاپی ہو گیا',copyFail:'کاپی نہیں ہوا۔ نیچے سے خود کاپی کریں۔',
+ willWarn:'وصیت ایک تہائی سے زیادہ تھی، اس لیے صرف تہائی تک لی گئی۔',
+ needEstate:'رقم دیکھنے کے لیے کل ترکہ درج کریں۔',minus:'کم کریں',plus:'زیادہ کریں',
+ k:{husband:'شوہر',wife:'بیوی (بیویاں)',son:'بیٹا',dau:'بیٹی',gson:'پوتا (بیٹے کا بیٹا)',gdau:'پوتی (بیٹے کی بیٹی)',father:'والد',mother:'والدہ',gfather:'دادا',gmotherP:'دادی (والد کی ماں)',gmotherM:'نانی (والدہ کی ماں)',fbro:'حقیقی بھائی',fsis:'حقیقی بہن',cbro:'علاتی بھائی (صرف باپ شریک)',csis:'علاتی بہن (صرف باپ شریک)',ubro:'اخیافی بھائی (صرف ماں شریک)',usis:'اخیافی بہن (صرف ماں شریک)',fbroSon:'حقیقی بھائی کا بیٹا',cbroSon:'علاتی بھائی کا بیٹا',funcle:'حقیقی چچا',cuncle:'علاتی چچا (باپ کا علاتی بھائی)',funcleSon:'حقیقی چچا کا بیٹا'},
+ why:{son:'بیٹا موجود ہے',maleDesc:'بیٹا یا پوتا موجود ہے',desc:'اولاد موجود ہے',father:'والد موجود ہیں',gfather:'دادا موجود ہیں (امام ابوحنیفہؒ کے قول پر)',mother:'والدہ موجود ہیں',twoDau:'دو یا زیادہ بیٹیاں موجود ہیں',fbro:'حقیقی بھائی موجود ہے',fsisMag:'حقیقی بہن بیٹیوں کے ساتھ عصبہ بن گئی',twoFsis:'دو حقیقی بہنیں 2/3 لے چکی ہیں',nearer:'قریبی عصبہ موجود ہیں',noResidue:'فرض حصوں کے بعد کچھ نہیں بچا'},
+ n:{
+  spouse:p=>p.who==='husband'?`شوہر کا حصہ ${p.f}: ${p.desc?'مرحومہ کی اولاد موجود ہے':'مرحومہ کی کوئی اولاد نہیں'}۔`:`بیوی (بیویوں) کا کل حصہ ${p.f}: ${p.desc?'مرحوم کی اولاد موجود ہے':'مرحوم کی کوئی اولاد نہیں'}۔`,
+  mother6:p=>p.why==='desc'?'والدہ کو 1/6: مرحوم کی اولاد موجود ہے۔':'والدہ کو 1/6: دو یا زیادہ بھائی بہن موجود ہیں (چاہے انہیں حصہ نہ ملے)۔',
+  umar:()=>'والدہ کو زوج کا حصہ نکالنے کے بعد باقی کا 1/3، کیونکہ صرف والدین اور زوج وارث ہیں۔',
+  fa6:()=>'والد (یا دادا) کو 1/6: بیٹا یا پوتا موجود ہے۔',
+  faA:()=>'والد (یا دادا) کو 1/6 اور بچی ہوئی رقم بھی عصبہ کے طور پر، کیونکہ صرف بیٹی یا پوتی ہے۔',
+  faO:()=>'والد (یا دادا) عصبہ ہیں: فرض حصوں کے بعد باقی سب انہیں ملتا ہے۔',
+  aul:p=>`حصوں کا مجموعہ ${p.f} (ایک سے زیادہ) تھا، اس لیے "عول" کے تحت سب حصے یکساں نسبت سے کم کیے گئے۔`,
+  radd:()=>'حصے پورے نہ ہونے سے بچی ہوئی رقم زوج کے سوا باقی فرض والوں کو ان کے حصوں کے تناسب سے واپس (ردّ) کی گئی۔',
+  raddSpouse:()=>'کوئی اور وارث نہ ہونے سے باقی رقم بھی زوج کو دی گئی۔',
+  noHeirs:()=>'کوئی وارث نہیں چنا گیا۔ اس صورت میں ذوی الارحام یا بیت المال کا مسئلہ ہوتا ہے، کسی عالم سے پوچھیں۔'
+ }}
+};
+
+const PROJ={
+ur:['پروجیکٹ','مفتی سردار محمد جدون الاشرفی','بانی و مہتمم جامعۃ الإعزاز، ملک آباد گدون، ٹوپی، صوابی، خیبر پختونخوا، پاکستان'],
+ar:['مشروع','مفتي سردار محمد جدون الأشرفي','مؤسس ومدير جامعة الإعزاز، ملك آباد جدون، توپي، صوابي، خيبر بختونخوا، باكستان'],
+en:['A project of','Mufti Sardar Muhammad Jadoon Al-Ashrafi','Founder & Director, Jamia Al-I\'zaz, Malik Abad Gadoon, Topi, Swabi, Khyber Pakhtunkhwa, Pakistan'],
+ro:['Project','Mufti Sardar Muhammad Jadoon Al-Ashrafi','Bani o Muhtamim, Jamia Al-I\'zaz, Malik Abad Gadoon, Topi, Swabi, Khyber Pakhtunkhwa, Pakistan']};
+const DEVN={ur:'مفتی اویس رحمان جدون',ar:'مفتي أويس رحمان جدون',en:'Mufti Awais Rahman Jadoon',ro:'Mufti Awais Rahman Jadoon'};
+const DEV={ro:'Developer',en:'Developed by',ur:'ڈیولپر',ar:'المطوّر'};
+const KICK={ro:'Ilm-ul-Faraid',en:'Ilm al-Faraid',ur:'علم الفرائض',ar:'علم الفرائض'};
+const $=s=>document.querySelector(s);
+const app=$('#app');
+const MAXN={husband:1,wife:4,father:1,mother:1,gfather:1,gmotherP:1,gmotherM:1};
+const GROUPS=[['spouse',['husband','wife']],['children',['son','dau','gson','gdau']],['parents',['father','mother','gfather','gmotherP','gmotherM']],['sibs',['fbro','fsis','cbro','csis','ubro','usis']],['far',['fbroSon','cbroSon','funcle','cuncle','funcleSon']]];
+const blankN=()=>Object.fromEntries(KEYS.map(k=>[k,0]));
+const S={lang:'ro',sex:'M',demo:true,estate:12000000,funeral:100000,debts:500000,will:0,n:{...blankN(),wife:1,son:2,dau:1,father:1,mother:1}};
+try{const l=localStorage.getItem('miras-lang');if(l&&T[l])S.lang=l;}catch(e){}
+const nf=new Intl.NumberFormat('en-IN',{maximumFractionDigits:0});
+const fmt=x=>'Rs '+nf.format(Math.round(x));
+const esc=s=>String(s).replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
+
+function rowHTML(k){
+  const t=T[S.lang];
+  return `<div class="hrow${S.n[k]>0?' on':''}" id="r-${k}"><span class="hlabel">${t.k[k]}</span><span class="stepper"><button type="button" data-act="step" data-k="${k}" data-d="-1" aria-label="${t.minus}: ${esc(t.k[k])}">−</button><span class="val" id="v-${k}">${S.n[k]}</span><button type="button" data-act="step" data-k="${k}" data-d="1" aria-label="${t.plus}: ${esc(t.k[k])}">+</button></span></div>`;
+}
+function fldHTML(id,label){
+  return `<div class="fld"><label for="${id}">${label}</label><input id="${id}" data-num="1" type="text" inputmode="numeric" autocomplete="off" placeholder="0" value="${S[id]||''}"><span class="hint" id="h-${id}">${S[id]?fmt(S[id]):''}</span></div>`;
+}
+function render(){
+  const t=T[S.lang];
+  app.className=S.lang;app.dir=t.dir;app.lang=t.htmlLang;
+  const groups=GROUPS.map(([g,ks])=>{
+    const vis=ks.filter(k=>!(k==='husband'&&S.sex==='M')&&!(k==='wife'&&S.sex==='F'));
+    const rows=vis.map(rowHTML).join('');
+    if(g==='far'){
+      const open=ks.some(k=>S.n[k]>0)?' open':'';
+      return `<details class="far"${open}><summary>${t.g.far}</summary><p class="hint">${t.farHint}</p><div class="heirs">${rows}</div></details>`;
+    }
+    return `<div class="group"><h3>${t.g[g]}</h3><div class="heirs">${rows}</div></div>`;
+  }).join('');
+  app.innerHTML=`
+  <header class="hero"><span class="kicker">${KICK[S.lang]}</span>
+    <div><h1>${t.name}</h1></div>
+    <div class="seg lang" role="group" aria-label="Language">${[['en','English'],['ro','Roman'],['ur','اردو'],['ar','العربية']].map(([v,l])=>`<button type="button" data-act="lang" data-v="${v}" aria-pressed="${S.lang===v}">${l}</button>`).join('')}</div>
+  </header>
+  ${S.demo?`<div class="demo" id="demo"><span>${t.demo}</span><button type="button" class="link" data-act="reset">${t.reset}</button></div>`:''}
+  <section><h2><b>1</b>${t.s1}</h2>
+    <div class="seg" role="group"><button type="button" data-act="sex" data-v="M" aria-pressed="${S.sex==='M'}">${t.male}</button><button type="button" data-act="sex" data-v="F" aria-pressed="${S.sex==='F'}">${t.female}</button></div>
+  </section>
+  <section><h2><b>2</b>${t.s2}</h2>
+    <div class="fields">${fldHTML('estate',t.estate)}${fldHTML('funeral',t.funeral)}${fldHTML('debts',t.debts)}${fldHTML('will',t.will)}</div>
+  </section>
+  <section><h2><b>3</b>${t.s3}</h2>${groups}</section>
+  <section id="result" aria-live="polite"></section>
+  <footer class="foot"><p class="dev">${PROJ[S.lang][0]}: <bdi><b>${PROJ[S.lang][1]}</b></bdi><br><bdi>${PROJ[S.lang][2]}</bdi></p><p class="dev">${DEV[S.lang]}: <bdi><b>${DEVN[S.lang]}</b></bdi><br><bdi>Awaisrahmanjadoon@gmail.com</bdi><br><bdi>03139190497</bdi></p><p class="dev"><a href="privacy.html">${X[S.lang].priv}</a></p></footer>`;
+  renderResult();
+}
+
+let lastText='';
+function renderResult(){
+  const t=T[S.lang];
+  const r=calc(S.n,S.sex);
+  const net=Math.max(0,S.estate-S.funeral-S.debts);
+  const cap=Math.floor(net/3);
+  const willAmt=Math.min(S.will,cap);
+  const dist=net-willAmt;
+  const hasMoney=S.estate>0;
+  const lines=[];
+  const segBar=r.rows.length?`<div class="seg-bar" role="img" aria-label="${t.res}">${r.rows.map((x,i)=>`<i style="flex:${x.share.n/x.share.d} 1 0;background:var(--c${i%6})"></i>`).join('')}</div>`:'';
+  let html=`<h2>${t.res}</h2>`;
+  if(hasMoney){
+    const parts=[[t.bTotal,fmt(S.estate)]];
+    if(S.funeral)parts.push(['− '+t.bFuneral,fmt(S.funeral)]);
+    if(S.debts)parts.push(['− '+t.bDebts,fmt(S.debts)]);
+    if(willAmt)parts.push(['− '+t.bWill,fmt(willAmt)]);
+    html+=`<div class="sum"><small>${t.dist}</small><span class="big">${fmt(dist)}</span>${segBar}<dl class="calc">${parts.map(([a,b])=>`<div><dt>${a}</dt><dd>${b}</dd></div>`).join('')}</dl></div>`;
+    if(S.will>cap)html+=`<div class="warnbox">${t.willWarn}</div>`;
+    lines.push(`${t.dist}: ${fmt(dist)}`);
+  }else html+=`<div class="sum"><small>${t.needEstate}</small>${segBar}</div>`;
+  if(!r.empty){
+    html+=`<p class="parts">${t.parts(r.N)}</p><ul class="rows">`;
+    html+=r.rows.map((x,i)=>{
+      const pct=x.share.n/x.share.d*100;
+      const amt=dist*x.share.n/x.share.d;
+      const per=amt/x.count;
+      const frac=`${x.share.n}/${x.share.d}`;
+      lines.push(`${t.k[x.k]}${x.count>1?' x'+x.count:''}: ${frac}${hasMoney?' = '+fmt(amt):''}`);
+      return `<li class="row"><div class="rtop"><span class="who"><i class="dot" style="background:var(--c${i%6})"></i><span>${t.k[x.k]}${x.count>1?` <span class="cnt">× ${x.count}</span>`:''}</span></span><span class="frac"><bdi>${frac}</bdi></span></div><div class="bar" aria-hidden="true"><i style="width:${pct.toFixed(2)}%;background:var(--c${i%6})"></i></div><div class="rbot"><span class="amt">${hasMoney?fmt(amt):''}${hasMoney&&x.count>1?` <small>(${t.each} ${fmt(per)})</small>`:''}</span><span><bdi>${x.parts}</bdi> ${t.unit} · <span class="tag">${t.how[x.how]}</span></span></div></li>`;
+    }).join('');
+    html+='</ul>';
+  }
+  if(!r.empty&&r.rows.some(x=>x.count>1)){
+    const x2=X[S.lang];
+    const lcm=(a,b)=>a/gcd(a,b)*b;
+    const fac=r.rows.reduce((l,x)=>lcm(l,x.count/gcd(x.parts,x.count)),1);
+    const TT=r.N*fac;
+    html+=`<div class="list"><h3>${x2.tashihT}</h3><p>${x2.tashih(TT)}</p><ul>${r.rows.map(x=>`<li><b>${t.k[x.k]}</b>${x.count>1?' × '+x.count:''} — <bdi>${x.parts*fac/x.count} / ${TT}</bdi></li>`).join('')}</ul></div>`;
+    lines.push(x2.tashih(TT));
+    r.rows.forEach(x=>lines.push(`${t.k[x.k]}: ${x.parts*fac/x.count} / ${TT}`));
+  }
+  if(r.blocked.length)html+=`<div class="list"><h3>${t.blockedT}</h3><ul>${r.blocked.map(b=>`<li><b>${t.k[b.k]}</b> — ${t.why[b.why]}</li>`).join('')}</ul></div>`;
+  if(r.notes.length)html+=`<div class="list"><h3>${t.notesT}</h3><ul>${r.notes.map(x=>`<li>${t.n[x.c](x.p||{})}</li>`).join('')}</ul></div>`;
+  if(!r.empty)html+=`<div class="actions"><button type="button" class="btn" data-act="copy">${t.copy}</button><button type="button" class="btn alt" data-act="share">${X[S.lang].share}</button><button type="button" class="btn alt" data-act="print">${X[S.lang].print}</button><span id="cstatus" role="status"></span></div><textarea id="copybox" readonly hidden aria-label="${t.copy}"></textarea>`;
+  lastText=lines.join('\n');
+  $('#result').innerHTML=html;
+}
+
+function touched(){if(S.demo){S.demo=false;const d=$('#demo');if(d)d.remove();}}
+function reset(){
+  S.sex='M';S.estate=0;S.funeral=0;S.debts=0;S.will=0;S.n=blankN();S.demo=false;render();
+}
+app.addEventListener('click',e=>{
+  const b=e.target.closest('[data-act]');if(!b)return;
+  const a=b.dataset.act,t=T[S.lang];
+  if(a==='step'){
+    const k=b.dataset.k;
+    S.n[k]=Math.min(MAXN[k]??30,Math.max(0,S.n[k]+Number(b.dataset.d)));
+    $('#v-'+k).textContent=S.n[k];$('#r-'+k).classList.toggle('on',S.n[k]>0);touched();renderResult();
+  }else if(a==='sex'){
+    if(S.sex===b.dataset.v)return;
+    S.sex=b.dataset.v;
+    if(S.sex==='F'){S.n.wife=0;S.n.husband=1;}else{S.n.husband=0;S.n.wife=1;}
+    touched();render();
+  }else if(a==='lang'){
+    S.lang=b.dataset.v;try{localStorage.setItem('miras-lang',S.lang);}catch(err){}
+    render();
+  }else if(a==='reset'){reset();}
+  else if(a==='print'){window.print();}
+  else if(a==='share'){
+    const msg=`${t.name}\n\n${lastText}\n\n${PROJ[S.lang][1]}`;
+    window.open('https://wa.me/?text='+encodeURIComponent(msg),'_blank','noopener');
+  }
+  else if(a==='copy'){
+    const st=$('#cstatus'),box=$('#copybox');
+    const fallback=()=>{box.hidden=false;box.value=lastText;box.focus();box.select();st.textContent=t.copyFail;};
+    try{
+      navigator.clipboard.writeText(lastText).then(()=>{st.textContent=t.copied;},fallback);
+    }catch(err){fallback();}
+  }
+});
+app.addEventListener('input',e=>{
+  const el=e.target;if(!el.dataset||!el.dataset.num)return;
+  const digits=el.value.replace(/\D/g,'').slice(0,12);
+  if(digits!==el.value)el.value=digits;
+  S[el.id]=Number(digits)||0;
+  const h=$('#h-'+el.id);if(h)h.textContent=S[el.id]?fmt(S[el.id]):'';
+  touched();renderResult();
+});
+render();
+</script>
+<script>
+if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){});});}
+</script>
+</body>
+</html>
