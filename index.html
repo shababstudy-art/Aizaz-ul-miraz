@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#103d32">
+<meta name="application-name" content="اعزاز المیراث">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="اعزاز المیراث">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="icons/icon-192-v2.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon-v2.png">
+<title>اعزاز المیراث</title>
+
+
+<style>
+/* Self-hosted fonts (SIL Open Font License) - no internet needed, same look on screen and in print */
+@font-face{font-family:'Noto Nastaliq Urdu';font-style:normal;font-weight:400 600;font-display:swap;src:url(fonts/nastaliq-ar-400.woff2) format('woff2');unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC,U+102E0-102FB,U+10E60-10E7E,U+10EC2-10EC4,U+10EFC-10EFF,U+1EE00-1EE03,U+1EE05-1EE1F,U+1EE21-1EE22,U+1EE24,U+1EE27,U+1EE29-1EE32,U+1EE34-1EE37,U+1EE39,U+1EE3B,U+1EE42,U+1EE47,U+1EE49,U+1EE4B,U+1EE4D-1EE4F,U+1EE51-1EE52,U+1EE54,U+1EE57,U+1EE59,U+1EE5B,U+1EE5D,U+1EE5F,U+1EE61-1EE62,U+1EE64,U+1EE67-1EE6A,U+1EE6C-1EE72,U+1EE74-1EE77,U+1EE79-1EE7C,U+1EE7E,U+1EE80-1EE89,U+1EE8B-1EE9B,U+1EEA1-1EEA3,U+1EEA5-1EEA9,U+1EEAB-1EEBB,U+1EEF0-1EEF1}
+@font-face{font-family:'Noto Nastaliq Urdu';font-style:normal;font-weight:700;font-display:swap;src:url(fonts/nastaliq-ar-700.woff2) format('woff2');unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC,U+102E0-102FB,U+10E60-10E7E,U+10EC2-10EC4,U+10EFC-10EFF,U+1EE00-1EE03,U+1EE05-1EE1F,U+1EE21-1EE22,U+1EE24,U+1EE27,U+1EE29-1EE32,U+1EE34-1EE37,U+1EE39,U+1EE3B,U+1EE42,U+1EE47,U+1EE49,U+1EE4B,U+1EE4D-1EE4F,U+1EE51-1EE52,U+1EE54,U+1EE57,U+1EE59,U+1EE5B,U+1EE5D,U+1EE5F,U+1EE61-1EE62,U+1EE64,U+1EE67-1EE6A,U+1EE6C-1EE72,U+1EE74-1EE77,U+1EE79-1EE7C,U+1EE7E,U+1EE80-1EE89,U+1EE8B-1EE9B,U+1EEA1-1EEA3,U+1EEA5-1EEA9,U+1EEAB-1EEBB,U+1EEF0-1EEF1}
+@font-face{font-family:'Noto Nastaliq Urdu';font-style:normal;font-weight:400 600;font-display:swap;src:url(fonts/nastaliq-lat-400.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Noto Nastaliq Urdu';font-style:normal;font-weight:700;font-display:swap;src:url(fonts/nastaliq-lat-700.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Noto Naskh Arabic';font-style:normal;font-weight:400 700;font-display:swap;src:url(fonts/naskh-ar.woff2) format('woff2');unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC,U+102E0-102FB,U+10E60-10E7E,U+10EC2-10EC4,U+10EFC-10EFF,U+1EE00-1EE03,U+1EE05-1EE1F,U+1EE21-1EE22,U+1EE24,U+1EE27,U+1EE29-1EE32,U+1EE34-1EE37,U+1EE39,U+1EE3B,U+1EE42,U+1EE47,U+1EE49,U+1EE4B,U+1EE4D-1EE4F,U+1EE51-1EE52,U+1EE54,U+1EE57,U+1EE59,U+1EE5B,U+1EE5D,U+1EE5F,U+1EE61-1EE62,U+1EE64,U+1EE67-1EE6A,U+1EE6C-1EE72,U+1EE74-1EE77,U+1EE79-1EE7C,U+1EE7E,U+1EE80-1EE89,U+1EE8B-1EE9B,U+1EEA1-1EEA3,U+1EEA5-1EEA9,U+1EEAB-1EEBB,U+1EEF0-1EEF1}
+@font-face{font-family:'Noto Naskh Arabic';font-style:normal;font-weight:400 700;font-display:swap;src:url(fonts/naskh-lat.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;src:url(fonts/inter-lat.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+:root{
+  color-scheme:light;
+  --bg:#f5f3eb;--surface:#fffefa;--surface-2:#eeeee4;--surface-3:#e4e8dc;
+  --ink:#20352d;--muted:#68766c;--green:#12513f;--green-dark:#0b392e;--green-soft:#e1eee5;
+  --gold:#b18a43;--gold-light:#e6d5a9;--border:#dedfd3;
+  --shadow:0 12px 35px rgba(22,51,39,.075);--radius:20px;--radius-sm:13px;
+  --urdu:"Noto Nastaliq Urdu",serif;--arabic:"Noto Naskh Arabic",serif;--sans:"Inter",system-ui,sans-serif;
+  --c0:#24765a;--c1:#b88e49;--c2:#6d9e7e;--c3:#2f6f8f;--c4:#a45b4d;--c5:#7a6aa8;
+}
+@media (prefers-color-scheme:dark){
+  :root{color-scheme:dark;--bg:#101b17;--surface:#192721;--surface-2:#23342b;--surface-3:#2c4035;
+    --ink:#f1f0e7;--muted:#b1bdb3;--green:#8bc5a2;--green-dark:#102a21;--green-soft:#263c30;
+    --gold:#e0bd70;--gold-light:#6b5934;--border:#39483e;--shadow:0 12px 35px rgba(0,0,0,.24)}
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:20px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--urdu);font-size:15px;line-height:2.15;padding-bottom:110px}
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+#app{width:min(100% - 28px,760px);margin:auto}
+#app.en,#app.ro{font-family:var(--sans);line-height:1.7}
+#app.ar{font-family:var(--arabic);line-height:2.05}
+.number{font-family:var(--sans);font-variant-numeric:tabular-nums;direction:ltr;unicode-bidi:isolate}
+.arabic{font-family:var(--arabic);font-size:22px;line-height:2.1;text-align:right;direction:rtl}
+.hero{position:relative;overflow:hidden;margin:calc(18px + env(safe-area-inset-top,0px)) 0 25px;padding:24px 20px 27px;border-radius:26px;background:linear-gradient(135deg,#103e31,#155c43 65%,#0e392f);color:#fffdf3;box-shadow:0 18px 42px rgba(10,54,39,.2)}
+.hero::before{content:"";position:absolute;inset:0;opacity:.12;pointer-events:none;background-image:repeating-linear-gradient(45deg,transparent 0 24px,#e4d09b 25px 26px,transparent 27px 48px),repeating-linear-gradient(-45deg,transparent 0 24px,#e4d09b 25px 26px,transparent 27px 48px);-webkit-mask-image:linear-gradient(120deg,black,transparent 80%);mask-image:linear-gradient(120deg,black,transparent 80%)}
+.hero-content{position:relative;z-index:1}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:27px}
+.logo{width:48px;height:48px;border:1px solid rgba(230,213,169,.65);border-radius:15px;display:grid;place-items:center;color:#e8cf91;font-family:var(--arabic);font-size:24px;line-height:1}
+.lang-switch{display:flex;flex-wrap:wrap;gap:4px;padding:4px;border:1px solid rgba(255,255,255,.22);background:rgba(0,0,0,.14);border-radius:12px}
+.lang-switch button{min-height:34px;padding:3px 10px;border:0;border-radius:8px;background:transparent;color:#e3eae1;font-size:12px;font-family:inherit;line-height:1.4}
+.lang-switch button[aria-pressed="true"]{background:#e8d6a9;color:#173c2e;font-weight:700}
+.eyebrow{color:#e8d6a9;font-size:12px;letter-spacing:.5px}
+.hero h1{margin:3px 0 4px;font-size:clamp(29px,7vw,42px);font-weight:700;line-height:1.9}
+#app.en .hero h1,#app.ro .hero h1{line-height:1.3}
+.english-name{color:#e6d5a9;font-family:var(--sans);font-size:12px;letter-spacing:2px;font-weight:600;direction:ltr;text-align:start}
+.hero-rule{width:48px;height:2px;background:#d9b86d;margin-top:17px}
+.demo{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:0 0 14px;padding:11px 14px;border-radius:13px;background:var(--gold-light);color:var(--ink);font-size:12.5px;line-height:1.9}
+.link{background:none;border:0;color:var(--green);text-decoration:underline;font-weight:700;padding:4px}
+.section-heading{display:flex;align-items:center;gap:12px;margin:32px 3px 15px}
+.section-number{width:39px;height:39px;flex:0 0 39px;border-radius:12px;display:grid;place-items:center;color:#fff;background:var(--green);font-family:var(--sans);font-size:14px;font-weight:700;line-height:1}
+.section-heading h2{font-size:19px;line-height:1.9;margin:0}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);margin-bottom:14px}
+.card-title{margin:0 0 6px;font-size:15px}
+.gender-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.gender-option{min-height:112px;padding:14px 8px;border-radius:17px;border:1.5px solid var(--border);background:var(--surface);text-align:center;color:var(--ink);transition:.2s ease}
+.gender-option.selected{border-color:var(--gold);background:var(--green-soft);box-shadow:inset 0 0 0 1px var(--gold)}
+.gender-icon{display:block;font-size:30px;line-height:1.5;margin-bottom:5px}
+.gender-option strong{font-size:16px}
+.input-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.field{margin-bottom:13px}
+.field label{display:block;margin-bottom:7px;font-size:13px;font-weight:600}
+.field input{width:100%;height:50px;padding:10px 13px;border:1px solid var(--border);border-radius:12px;outline:none;background:var(--surface-2);color:var(--ink);font-family:var(--sans);font-size:15px;direction:ltr;text-align:left}
+.field input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(177,138,67,.15)}
+.field small{display:block;color:var(--muted);font-family:var(--sans);font-size:11px;margin-top:5px;min-height:1em;direction:ltr;text-align:start}
+.group-title{display:flex;align-items:center;justify-content:space-between;margin:23px 0 10px;padding-bottom:7px;border-bottom:1px solid var(--border);font-size:15px;font-weight:700}
+.group-title:first-child{margin-top:0}
+details.far{margin-top:20px;border:1px dashed var(--border);border-radius:14px;padding:2px 14px}
+details.far summary{cursor:pointer;font-weight:700;font-size:15px;padding:10px 0}
+details.far .hint{color:var(--muted);font-size:12px;margin:0 0 6px}
+.heir-row{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:58px;border-bottom:1px solid var(--border)}
+.heir-row:last-child{border-bottom:0}
+.heir-name{font-size:14px}
+.heir-row.on .heir-name{font-weight:700;color:var(--green)}
+.stepper{display:flex;align-items:center;gap:11px;background:var(--surface-2);padding:4px;border-radius:12px}
+.stepper button{width:38px;height:38px;min-width:38px;border:0;border-radius:9px;background:var(--surface);color:var(--green);font-family:var(--sans);font-size:20px;font-weight:600;line-height:1}
+.stepper .count{min-width:20px;text-align:center;font-weight:700}
+.result-hero{background:linear-gradient(145deg,#0c3b2e,#176047);color:#fff;border-radius:22px;padding:24px 20px;box-shadow:var(--shadow);text-align:center;position:relative;overflow:hidden}
+.result-hero .label{color:#e4d5ae;font-size:13px}
+.result-hero .amount{font-family:var(--sans);font-size:clamp(26px,8vw,36px);font-weight:800;letter-spacing:-1px;direction:ltr;margin:5px 0}
+.result-summary{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
+.result-summary div{padding:10px;border-radius:12px;background:rgba(255,255,255,.1)}
+.result-summary small{display:block;color:#d7e5db;font-size:11px;line-height:1.8}
+.result-summary strong{font-family:var(--sans);font-size:14px;direction:ltr;unicode-bidi:isolate;display:block}
+.warnbox{margin-top:12px;padding:11px 13px;border-radius:11px;background:#f6e4df;color:#7a3328;font-size:12.5px;line-height:1.9}
+.parts{color:var(--muted);font-size:12.5px;margin:18px 2px 10px}
+.share-bar{display:flex;width:100%;height:13px;border-radius:20px;overflow:hidden;background:var(--surface-2);direction:ltr;gap:2px}
+.share-bar span{height:100%}
+.legend{display:flex;flex-wrap:wrap;gap:13px;margin:11px 0 6px;font-size:12px;color:var(--muted)}
+.legend span{display:flex;align-items:center;gap:5px}
+.dot{width:9px;height:9px;border-radius:3px;display:inline-block}
+.heir-card{padding:0;overflow:hidden;margin-top:14px}
+.heir-card-top{display:flex;justify-content:space-between;align-items:center;padding:16px;gap:10px}
+.heir-card-top h3{margin:0;font-size:16px}
+.cnt{color:var(--muted);font-family:var(--sans);font-size:.8em}
+.fraction{text-align:center;background:var(--green-soft);color:var(--green);border-radius:12px;padding:7px 13px;font-family:var(--sans);font-weight:800;font-size:20px;direction:ltr;min-width:66px}
+.heir-data{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;padding:0 13px 14px}
+.heir-data div{background:var(--surface-2);border-radius:10px;padding:9px 5px;text-align:center}
+.heir-data small{display:block;color:var(--muted);font-size:11px;line-height:1.8}
+.heir-data strong{font-family:var(--sans);font-size:13px;direction:ltr;unicode-bidi:isolate;display:block}
+.type-tag{display:inline-block;padding:0 10px;border-radius:20px;font-size:11px;font-weight:700;line-height:1.9}
+.tag-fard{background:#e5eee1;color:#20583a}
+.tag-asaba{background:#f2e9d4;color:#73511b}
+.tag-radd{background:#e9e3f3;color:#5c4386}
+.daleel{padding:14px 15px;border-top:1px solid var(--border)}
+.daleel-heading{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:700;margin-bottom:9px}
+.daleel-heading::before{content:"";width:4px;height:17px;border-radius:5px;background:currentColor}
+.daleel-quran{background:rgba(31,110,72,.055)}
+.daleel-quran .daleel-heading{color:#36845b}
+.daleel-hadith{background:rgba(177,138,67,.09)}
+.daleel-hadith .daleel-heading{color:#a37c37}
+.daleel-ijma{background:rgba(94,75,139,.075)}
+.daleel-ijma .daleel-heading{color:#8270b3}
+.daleel .arabic{font-size:20px;color:var(--ink);margin:0 0 8px}
+.translation{font-family:var(--urdu);font-size:13px;line-height:2.3;margin:5px 0;direction:rtl;text-align:right}
+.source{color:var(--muted);font-family:var(--urdu);font-size:11px;line-height:1.9;margin-top:7px;direction:rtl;text-align:right}
+.card ul{margin:8px 0 0;padding-inline-start:20px;font-size:13px;line-height:2}
+.blocked-list{display:flex;flex-direction:column;gap:9px;margin-top:10px}
+.blocked-item{padding:11px 13px;background:var(--surface-2);border-radius:11px;font-size:13px;line-height:1.9}
+.blocked-item b{display:block}
+.blocked-item span{color:#a45b4d;font-size:12px}
+.table-wrap{overflow-x:auto;margin-top:10px}
+.tashih-table{width:100%;border-collapse:collapse;font-size:12.5px;text-align:center}
+.tashih-table th{background:var(--green);color:#fff;font-weight:600}
+.tashih-table th,.tashih-table td{padding:10px 7px;border:1px solid var(--border)}
+.tashih-table td:not(:first-child){font-family:var(--sans);direction:ltr}
+.actions{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:6px}
+.btn{min-height:49px;padding:9px 5px;border-radius:13px;border:1px solid var(--border);background:var(--surface-2);color:var(--ink);font-size:12.5px;font-weight:600;text-align:center;line-height:1.6}
+.btn-primary{background:var(--green);border-color:var(--green);color:#fff}
+.btn-gold{background:var(--gold);border-color:var(--gold);color:#172e22}
+.btn:active,.gender-option:active{transform:scale(.97)}
+#cstatus{grid-column:1/-1;font-size:12px;color:var(--muted);min-height:1em}
+#copybox{width:100%;height:120px;margin-top:10px;border-radius:12px;border:1px solid var(--border);padding:10px;background:var(--surface-2);color:var(--ink)}
+.footer{margin:30px 0 15px;padding:23px 15px;border-top:1px solid var(--border);text-align:center;color:var(--muted);font-size:12px;line-height:2}
+.footer p{margin:0 0 12px}
+.footer strong,.footer b{color:var(--ink)}
+.footer a{color:var(--green);text-decoration:underline;text-underline-offset:4px}
+.sticky-bar{position:fixed;z-index:10;bottom:0;left:0;right:0;padding:12px 15px calc(12px + env(safe-area-inset-bottom));background:color-mix(in srgb,var(--surface) 94%,transparent);border-top:1px solid var(--border);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.sticky-inner{max-width:730px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.sticky-info{font-size:11.5px;line-height:1.7}
+.sticky-info strong{display:block;font-family:var(--sans);font-size:15px;direction:ltr;text-align:start}
+.sticky-inner .btn{min-width:150px}
+@media (min-width:600px){#app{width:min(100% - 48px,760px)}.hero{padding:30px}.card{padding:22px}.heir-card{padding:0}}
+@media (max-width:390px){#app{width:calc(100% - 22px)}.hero{padding:19px 16px 22px}.lang-switch button{padding:3px 7px;font-size:11px}.input-grid{grid-template-columns:1fr}.card{padding:15px}.heir-card{padding:0}.sticky-inner .btn{min-width:120px}}
+@media (prefers-color-scheme:dark){.warnbox{background:#4a2a24;color:#f3cfc7}.tag-fard{background:#24402f;color:#a9d8bb}.tag-asaba{background:#463b21;color:#e8cf91}.tag-radd{background:#38304f;color:#cbbdf0}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+@media print{
+  :root{color-scheme:light;--bg:#fff;--surface:#fff;--surface-2:#f5f5f5;--ink:#17251d;--muted:#555;--border:#ddd}
+  body{background:#fff;padding:0}
+  .sticky-bar,.lang-switch,.actions,.demo,.pre,details.far,#copybox{display:none!important}
+  .hero,.result-hero{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+  .card,.heir-card{box-shadow:none;break-inside:avoid}
+  #app{width:100%;max-width:none}
+}
+
+/* =========================================
+   I'ZAZ AL-MIRATH — PREMIUM 3D DESIGN LAYER
+========================================= */
+
+:root {
+  --depth-shadow:
+    0 12px 25px rgba(18, 55, 40, .10),
+    0 4px 8px rgba(18, 55, 40, .06),
+    inset 0 1px 0 rgba(255,255,255,.8);
+
+  --gold-glow:
+    0 0 22px rgba(207, 169, 91, .22);
+}
+
+/* 3D HERO */
+.hero {
+  background:
+    radial-gradient(
+      circle at 85% 15%,
+      rgba(225, 191, 115, .24),
+      transparent 35%
+    ),
+    linear-gradient(
+      145deg,
+      #092d24 0%,
+      #12533e 48%,
+      #1d7050 100%
+    );
+
+  box-shadow:
+    0 22px 45px rgba(7, 42, 30, .28),
+    0 8px 15px rgba(7, 42, 30, .16),
+    inset 0 1px 1px rgba(255,255,255,.22),
+    inset 0 -8px 20px rgba(0,0,0,.12);
+}
+
+/* 3D LOGO */
+.logo {
+  background: linear-gradient(
+    145deg,
+    #f0d99f,
+    #b88c43 55%,
+    #805d29
+  );
+
+  color: #173d2d;
+
+  border: 1px solid #f5e5b9;
+
+  box-shadow:
+    0 7px 14px rgba(0,0,0,.22),
+    inset 0 2px 3px rgba(255,255,255,.65),
+    inset 0 -3px 5px rgba(80,50,10,.2);
+
+  text-shadow: 0 1px 1px rgba(255,255,255,.4);
+}
+
+/* FLOATING CARDS */
+.card {
+  position: relative;
+
+  box-shadow:
+    0 10px 25px rgba(22, 51, 39, .065),
+    0 3px 7px rgba(22, 51, 39, .04),
+    inset 0 1px 0 rgba(255,255,255,.65);
+
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 18px 35px rgba(22, 51, 39, .12),
+    0 5px 12px rgba(22, 51, 39, .06);
+}
+
+/* 3D GENDER CARDS */
+.gender-option {
+  box-shadow:
+    0 5px 12px rgba(0,0,0,.045),
+    inset 0 1px 0 rgba(255,255,255,.8);
+
+  transition: all .25s ease;
+}
+
+.gender-option:hover {
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 12px 22px rgba(18, 81, 63, .13);
+}
+
+.gender-option.selected {
+  background: linear-gradient(
+    145deg,
+    var(--green-soft),
+    var(--surface)
+  );
+
+  box-shadow:
+    0 8px 20px rgba(177,138,67,.16),
+    inset 0 1px 3px rgba(255,255,255,.8),
+    inset 0 -2px 5px rgba(177,138,67,.12);
+}
+
+/* 3D STEPPER */
+.stepper {
+  box-shadow:
+    inset 2px 3px 6px rgba(0,0,0,.07),
+    inset -2px -2px 5px rgba(255,255,255,.35);
+}
+
+.stepper button {
+  box-shadow:
+    0 4px 7px rgba(0,0,0,.09),
+    inset 0 1px 1px rgba(255,255,255,.9);
+
+  transition: all .15s ease;
+}
+
+.stepper button:active {
+  transform: translateY(3px);
+
+  box-shadow:
+    inset 0 3px 6px rgba(0,0,0,.16);
+}
+
+/* 3D INPUT FIELDS */
+.field input {
+  box-shadow:
+    inset 2px 3px 6px rgba(0,0,0,.045),
+    0 1px 0 rgba(255,255,255,.5);
+
+  transition: all .2s ease;
+}
+
+.field input:focus {
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 0 0 3px rgba(177,138,67,.15),
+    0 5px 12px rgba(177,138,67,.09);
+}
+
+/* PREMIUM RESULT HERO */
+.result-hero {
+  background:
+    radial-gradient(
+      ellipse at 50% 0%,
+      rgba(227,192,115,.23),
+      transparent 55%
+    ),
+    linear-gradient(
+      145deg,
+      #092f25,
+      #155c43 55%,
+      #0a392d
+    );
+
+  box-shadow:
+    0 22px 40px rgba(8,53,37,.25),
+    0 7px 14px rgba(8,53,37,.15),
+    inset 0 1px 1px rgba(255,255,255,.2),
+    inset 0 -8px 20px rgba(0,0,0,.15);
+}
+
+.result-hero .amount {
+  color: #f2d99e;
+
+  text-shadow:
+    0 3px 12px rgba(0,0,0,.25),
+    0 0 20px rgba(225,190,105,.18);
+}
+
+.result-summary div {
+  border: 1px solid rgba(255,255,255,.12);
+
+  box-shadow:
+    inset 0 1px 2px rgba(255,255,255,.12),
+    0 4px 10px rgba(0,0,0,.09);
+
+  backdrop-filter: blur(8px);
+}
+
+/* SHARE BAR DEPTH */
+.share-bar {
+  height: 16px;
+
+  padding: 2px;
+
+  border: 1px solid var(--border);
+
+  box-shadow:
+    inset 0 3px 6px rgba(0,0,0,.13),
+    0 2px 4px rgba(255,255,255,.4);
+}
+
+.share-bar span {
+  border-radius: 10px;
+
+  box-shadow:
+    inset 0 2px 3px rgba(255,255,255,.25),
+    inset 0 -2px 3px rgba(0,0,0,.12);
+}
+
+/* 3D HEIR CARDS */
+.heir-card {
+  overflow: hidden;
+
+  box-shadow:
+    0 9px 22px rgba(22,51,39,.075),
+    inset 0 1px 0 rgba(255,255,255,.6);
+}
+
+.heir-card-top {
+  background: linear-gradient(
+    145deg,
+    var(--surface),
+    var(--surface-2)
+  );
+}
+
+.fraction {
+  box-shadow:
+    0 5px 12px rgba(18,81,63,.10),
+    inset 0 1px 2px rgba(255,255,255,.7);
+}
+
+/* 3D TYPE TAGS */
+.type-tag {
+  box-shadow:
+    0 2px 5px rgba(0,0,0,.08),
+    inset 0 1px 1px rgba(255,255,255,.5);
+}
+
+/* 3D DALEEL PANELS */
+.daleel {
+  position: relative;
+
+  box-shadow:
+    inset 0 2px 6px rgba(0,0,0,.025);
+}
+
+.daleel-quran {
+  border-right: 3px solid #36845b;
+}
+
+.daleel-hadith {
+  border-right: 3px solid #b18a43;
+}
+
+.daleel-ijma {
+  border-right: 3px solid #8270b3;
+}
+
+/* BUTTONS */
+.btn {
+  box-shadow:
+    0 5px 10px rgba(0,0,0,.07),
+    inset 0 1px 1px rgba(255,255,255,.5);
+
+  transition: all .2s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(
+    145deg,
+    #1b7050,
+    #105039
+  );
+
+  box-shadow:
+    0 7px 15px rgba(16,80,57,.24),
+    inset 0 1px 1px rgba(255,255,255,.25);
+}
+
+.btn-gold {
+  background: linear-gradient(
+    145deg,
+    #e3c77f,
+    #b18a43
+  );
+
+  box-shadow:
+    0 7px 15px rgba(177,138,67,.22),
+    inset 0 1px 1px rgba(255,255,255,.5);
+}
+
+.btn:active {
+  transform: translateY(3px) scale(.98);
+
+  box-shadow:
+    inset 0 3px 7px rgba(0,0,0,.15);
+}
+
+/* STICKY GLASS ACTION BAR */
+.sticky-bar {
+  background: color-mix(
+    in srgb,
+    var(--surface) 85%,
+    transparent
+  );
+
+  backdrop-filter: blur(20px);
+
+  box-shadow:
+    0 -8px 25px rgba(0,0,0,.06);
+}
+
+/* DARK MODE 3D */
+@media (prefers-color-scheme: dark) {
+
+  :root {
+    --depth-shadow:
+      0 12px 28px rgba(0,0,0,.35),
+      inset 0 1px 0 rgba(255,255,255,.045);
+  }
+
+  .card,
+  .heir-card {
+    box-shadow:
+      0 12px 25px rgba(0,0,0,.24),
+      inset 0 1px 0 rgba(255,255,255,.045);
+  }
+
+  .gender-option {
+    box-shadow:
+      0 5px 12px rgba(0,0,0,.2),
+      inset 0 1px 0 rgba(255,255,255,.04);
+  }
+
+  .gender-option.selected {
+    box-shadow:
+      0 0 0 1px var(--gold),
+      0 8px 20px rgba(0,0,0,.25);
+  }
+
+  .stepper button {
+    box-shadow:
+      0 4px 8px rgba(0,0,0,.25),
+      inset 0 1px 1px rgba(255,255,255,.07);
+  }
+
+  .fraction {
+    box-shadow:
+      0 5px 12px rgba(0,0,0,.2),
+      inset 0 1px 1px rgba(255,255,255,.06);
+  }
+
+  .daleel-quran {
+    background: rgba(54,132,91,.12);
+  }
+
+  .daleel-hadith {
+    background: rgba(177,138,67,.12);
+  }
+
+  .daleel-ijma {
+    background: rgba(130,112,179,.12);
+  }
+}
+
+/* ACCESSIBILITY */
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .gender-option,
+  .btn,
+  .stepper button {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+/* small fixes so the layer also works in left-to-right languages and print */
+.daleel-quran,.daleel-hadith,.daleel-ijma{border-right:0}
+.daleel-quran{border-inline-start:3px solid #36845b}
+.daleel-hadith{border-inline-start:3px solid #b18a43}
+.daleel-ijma{border-inline-start:3px solid #8270b3}
+.card:hover{transform:none}
+@media (hover:hover){.card.step:hover{transform:translateY(-2px)}}
+@media print{.card,.gender-option,.btn{box-shadow:none!important;transform:none!important}}
+
+
+.logo{width:auto;min-width:48px;padding:0 13px;font-size:19px;white-space:nowrap}
+.english-name{direction:inherit;text-align:start;unicode-bidi:isolate}
+.heir-card-top{padding-bottom:12px}
+.heir-card-top + .heir-data{padding-top:2px}
+
+.footer{margin:34px 0 10px;padding:0;border:0;text-align:start;display:grid;gap:14px}
+.credit-card{position:relative;overflow:hidden;padding:22px 22px 20px;border-radius:24px;color:#eaf3f0;font-size:14px;line-height:2;background:radial-gradient(circle at 90% 0%,rgba(225,191,115,.16),transparent 45%),linear-gradient(145deg,#0a1f1c,#0d2b25 60%,#0a1f1c);border:1px solid #1f3a35;box-shadow:0 18px 38px rgba(6,28,22,.28),0 6px 12px rgba(6,28,22,.18),inset 0 1px 1px rgba(255,255,255,.08),inset 0 -6px 16px rgba(0,0,0,.25)}
+.credit-card::before{content:"";position:absolute;inset-inline-start:0;top:22px;bottom:22px;width:3px;border-radius:3px;background:linear-gradient(180deg,#e3c77f,#b18a43)}
+.credit-card span,.credit-card strong{display:block}
+.credit-label{color:#9db5af;font-size:12.5px;letter-spacing:.3px}
+.credit-name{color:#d4af5f;font-size:17px;font-weight:700;line-height:1.9;margin:2px 0 4px;text-shadow:0 1px 8px rgba(212,175,95,.18)}
+.credit-line{color:#eaf3f0;font-size:13.5px;line-height:1.95}
+.credit-line bdi[dir="ltr"]{font-family:var(--sans);font-size:13px;letter-spacing:.2px}
+.privacy{margin:4px 0 0;text-align:center;font-size:12.5px}
+.privacy a{color:var(--green)}
+@media print{.credit-card{box-shadow:none;print-color-adjust:exact;-webkit-print-color-adjust:exact}}
+.footer .credit-name{color:#d4af5f}
+.footer .credit-label{color:#9db5af}
+.footer .credit-line{color:#eaf3f0}
+
+
+/* ===== PROFESSIONAL ONE-PAGE A4 PRINT LAYOUT ===== */
+.print-only{display:none}
+@media print{
+  @page{size:A4 portrait;margin:7mm}
+  html,body{width:100%;min-height:0;background:#fff!important}
+  body{padding:0!important;margin:0!important;font-size:9.2px!important;line-height:1.55!important}
+  .hero,.pre,.demo,.sticky-bar,.footer,.noprint,.lang-switch,details.far,#copybox{display:none!important}
+  .print-only{display:block}
+  #app{width:100%!important;max-width:none!important;margin:0!important;padding:0!important}
+  .letterhead{position:static!important;display:block!important;padding:0 0 3mm!important;margin:0 0 3mm!important;background:#fff!important;text-align:center;color:#0d3b2e!important}
+  .lh-name{font-family:var(--urdu)!important;font-size:21px!important;font-weight:700;line-height:1.5!important;color:#0d3b2e!important}
+  #app.en .lh-name,#app.ro .lh-name{font-family:var(--sans)!important;line-height:1.3!important;letter-spacing:.3px}
+  .lh-rule,.lf-rule{height:0;border-top:2px solid #b18a43;border-bottom:1px solid #b18a43;padding-top:1px;margin:1mm 18mm 2mm}
+  .lh-row{display:flex;justify-content:space-between;gap:8px;font-size:8px;color:#33463d;padding:0 2mm}
+  .lh-date{font-family:var(--sans)}
+  .letterfoot{position:static!important;display:block!important;padding:2mm 0 0!important;margin:2mm 0 0!important;background:#fff!important;text-align:center;color:#0d3b2e!important;border-top:1px solid #b18a43}
+  .lf-rule{display:none}
+  .lf-name{font-weight:700;font-size:10px;line-height:1.5;color:#0d3b2e}
+  .lf-role,.lf-addr{font-size:8px;color:#4b5d54;line-height:1.45}
+  .pw,.pw thead,.pw tbody,.pw tfoot,.pw tr,.pw td{display:block!important;width:100%!important;padding:0!important;border:0!important}
+  .pw-h,.pw-f{display:none!important}
+  .pw{border-collapse:collapse!important}
+  .pw td{display:block!important}
+  #result{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:2mm 2.5mm;align-items:start}
+  #result>.section-heading,#result>.result-hero,#result>.warnbox,#result>.parts,
+  #result>.share-bar,#result>.legend,#result>.card:not(.heir-card){grid-column:1/-1}
+  .section-heading{margin:0 0 1mm!important}
+  .section-heading h2{font-size:11px!important;line-height:1.5!important;color:#0d3b2e}
+  .section-number{display:none!important}
+  .result-hero{padding:3mm 4mm!important;border-radius:3mm!important;box-shadow:none!important;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+  .result-hero .label{font-size:8px!important}
+  .result-hero .amount{font-size:19px!important;margin:0!important}
+  .result-summary{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:1.5mm!important;margin-top:2mm!important}
+  .result-summary div{padding:1.5mm!important;border:1px solid rgba(255,255,255,.15);border-radius:2mm}
+  .result-summary small{font-size:7px!important;line-height:1.35!important}
+  .result-summary strong{font-size:9px!important}
+  .warnbox{margin:1mm 0!important;padding:1.5mm 2mm!important;font-size:8px!important}
+  .parts{font-size:8px!important;margin:0!important}
+  .share-bar{height:7px!important;margin:0!important}
+  .legend{gap:2mm!important;margin:0!important;font-size:7px!important}
+  .dot{width:6px;height:6px}
+  .card,.heir-card{box-shadow:none!important;transform:none!important;break-inside:avoid!important;page-break-inside:avoid!important}
+  .heir-card{margin:0!important;border:1px solid #d9ddd3!important;border-radius:2.5mm!important;padding:0!important}
+  .heir-card-top{padding:1.5mm 2mm!important}
+  .heir-card-top h3{font-size:9px!important;line-height:1.4!important}
+  .type-tag{font-size:7px!important;line-height:1.4!important;padding:0 1.5mm!important}
+  .fraction{font-size:12px!important;min-width:0!important;padding:1mm 2mm!important;border-radius:2mm!important}
+  .heir-data{gap:1mm!important;padding:0 1.5mm 1.5mm!important}
+  .heir-data div{padding:1mm!important;border-radius:1.5mm!important}
+  .heir-data small{font-size:6.5px!important;line-height:1.3!important}
+  .heir-data strong{font-size:8px!important}
+  .daleel{padding:1.5mm 2mm!important;border-top:1px solid #e1e3dc!important}
+  .daleel-heading{font-size:7px!important;margin-bottom:0!important}
+  .daleel .arabic{font-size:11px!important;line-height:1.45!important;margin:0 0 .5mm!important}
+  .translation{font-size:7.5px!important;line-height:1.55!important;margin:0!important}
+  .source{font-size:6.5px!important;line-height:1.35!important;margin-top:.5mm!important}
+  .card{padding:2mm 2.5mm!important;margin:0!important;border:1px solid #d9ddd3!important}
+  .card-title{font-size:9px!important;margin:0 0 1mm!important}
+  .card ul{font-size:7.5px!important;line-height:1.45!important;margin:0!important;padding-inline-start:4mm!important}
+  .table-wrap{margin-top:1mm!important;overflow:visible!important}
+  .tashih-table{font-size:7.5px!important}
+  .tashih-table th,.tashih-table td{padding:1mm 1.5mm!important}
+  .result-hero,.share-bar,.type-tag,.daleel,.tashih-table th,.fraction{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+  .credit-card{display:none!important}
+}
+
+/* Official Jamia logo in place of the Mirath tile */
+.logo.logo-img{
+  width:82px!important;height:82px!important;min-width:82px!important;
+  padding:3px!important;display:grid!important;place-items:center!important;
+  overflow:hidden;border-radius:18px!important;background:#fff!important;
+  border:2px solid #d8bd78!important;
+  box-shadow:0 8px 18px rgba(0,0,0,.22),inset 0 1px 2px rgba(255,255,255,.9)!important;
+}
+.logo.logo-img img{
+  display:block;width:100%!important;height:100%!important;
+  object-fit:contain!important;border-radius:13px!important;
+}
+@media print{
+  .logo.logo-img{display:none!important}
+}
+
+
+/* Fix print pagination: keep the Tashih table genuinely tabular.
+   The outer print wrapper's .pw td rule must not turn nested cells into blocks. */
+@media print{
+  .pw .tashih-table{
+    display:table!important;
+    width:100%!important;
+    table-layout:fixed!important;
+    border-collapse:collapse!important;
+    margin:0!important;
+  }
+  .pw .tashih-table thead{display:table-header-group!important}
+  .pw .tashih-table tbody{display:table-row-group!important}
+  .pw .tashih-table tr{display:table-row!important;width:auto!important}
+  .pw .tashih-table th,
+  .pw .tashih-table td{
+    display:table-cell!important;
+    width:auto!important;
+    padding:1mm 2mm!important;
+    vertical-align:middle!important;
+    line-height:1.3!important;
+    white-space:normal!important;
+  }
+  .pw .tashih-table th:first-child,
+  .pw .tashih-table td:first-child{width:48%!important}
+  .pw .tashih-table th:nth-child(2),
+  .pw .tashih-table td:nth-child(2){width:16%!important}
+  .pw .tashih-table th:last-child,
+  .pw .tashih-table td:last-child{width:36%!important}
+  .table-wrap{margin:1mm 0 0!important}
+  #result>.card:not(.heir-card){padding:1.5mm 2mm!important}
+  #result>.card:not(.heir-card) .card-title{margin-bottom:.5mm!important}
+  #result>.card:not(.heir-card) ul{padding-inline-start:4mm!important}
+  .heir-card-top{padding:1mm 1.5mm!important}
+  .heir-data{padding:0 1.5mm 1mm!important}
+  .daleel{padding:1mm 1.5mm!important}
+}
+
+@media print{
+  #app{display:flex!important;flex-direction:column;min-height:271mm}
+  .letterfoot{margin-top:auto!important}
+}
+@media print{
+  #app{min-height:262mm}
+  #app.ar{line-height:1.45!important}
+  #app.ar .daleel .arabic{line-height:1.35!important}
+  #app.ar .translation{line-height:1.45!important}
+  .letterfoot{break-inside:avoid;page-break-inside:avoid}
+}
+@media print{
+  #app.ur{line-height:1.95!important}
+  #app.ur .lh-row,#app.ur .lf-role,#app.ur .lf-addr,#app.ur .lf-name{line-height:1.9!important}
+  #app.ur .lh-name{line-height:1.7!important}
+  #app.ur .section-heading h2,#app.ur .card-title,#app.ur .parts,#app.ur .legend,#app.ur .heir-card-top h3,#app.ur .type-tag,#app.ur .result-hero .label,#app.ur .result-summary small,#app.ur .heir-data small,#app.ur .daleel-heading{line-height:1.9!important}
+  #app.ur .translation{line-height:2.05!important}
+  #app.ur .source{line-height:1.8!important}
+  #app.ur .card ul{line-height:1.95!important}
+  #app.ur .tashih-table th,#app.ur .tashih-table td{line-height:1.8!important}
+  #app{min-height:0!important}
+  #app.ur{min-height:0!important}
+}
+@media print{
+  @page{size:A4 portrait;margin:6mm}
+  #app.ur{line-height:1.8!important}
+  #app.ur .lh-name{font-size:19px!important;line-height:1.6!important}
+  #app.ur .translation{line-height:1.85!important}
+  #app.ur .card ul{line-height:1.7!important}
+  #app.ur .card ul li{line-height:1.7!important}
+  #app.ur .tashih-table th,#app.ur .tashih-table td{line-height:1.6!important}
+  #app.ur .heir-data small,#app.ur .type-tag,#app.ur .daleel-heading,#app.ur .source{line-height:1.6!important}
+  #app.ur .section-heading h2,#app.ur .card-title,#app.ur .parts,#app.ur .legend{line-height:1.7!important}
+  #app.ur .daleel .arabic{line-height:1.6!important}
+  #app.ur .letterfoot{padding-top:1mm!important;margin-top:1mm!important}
+}
+@media print{
+  #app.ur .result-hero{padding:2mm 3.5mm!important}
+  #app.ur .result-hero .amount{font-size:17px!important}
+  #app.ur .result-summary{margin-top:1mm!important}
+  #app.ur .heir-card-top{padding:.6mm 1.5mm!important}
+  #app.ur .daleel{padding:.6mm 1.5mm!important}
+  #app.ur .daleel-heading{line-height:1.35!important;margin-bottom:0!important}
+  #app.ur .letterhead{padding-bottom:1.5mm!important;margin-bottom:2mm!important}
+  #app.ur .lh-row{line-height:1.6!important}
+  #app.ur .heir-data div{padding:.5mm!important}
+}
+.lh-brand{display:flex;align-items:center;justify-content:center;gap:3mm}
+@media print{
+  .lh-brand{display:flex!important;align-items:center;justify-content:center;gap:3mm}
+  .lh-logo{display:block;width:12mm!important;height:12mm!important;object-fit:contain;flex:0 0 auto;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+  .lh-brand .lh-name{margin:0}
+  .lf-line{font-size:8.5px;line-height:1.8;color:#33463d;white-space:nowrap}
+  #app.ur .lf-line{line-height:1.7!important}
+}
+.logo.logo-img{background:transparent!important;border:0!important;box-shadow:none!important;padding:0!important;overflow:visible!important;width:88px!important;height:88px!important;min-width:88px!important;border-radius:0!important}
+.logo.logo-img img{object-fit:contain!important;border-radius:0!important;background:transparent!important;filter:drop-shadow(0 4px 10px rgba(0,0,0,.35))}
+@media print{.lh-logo{background:transparent!important;filter:none!important}}
+</style>
+</head>
+<body>
+
+<div id="app"></div>
+
+<script>
+/*CALC-START*/
+const KEYS=['husband','wife','son','dau','gson','gdau','father','mother','gfather','gmotherP','gmotherM','fbro','fsis','cbro','csis','ubro','usis','fbroSon','cbroSon','funcle','cuncle','funcleSon'];
+const gcd=(a,b)=>b?gcd(b,a%b):Math.abs(a);
+const fr=(n,d=1)=>{const g=gcd(n,d)||1;return{n:n/g,d:d/g};};
+const add=(a,b)=>fr(a.n*b.d+b.n*a.d,a.d*b.d);
+const sub=(a,b)=>fr(a.n*b.d-b.n*a.d,a.d*b.d);
+const mul=(a,b)=>fr(a.n*b.n,a.d*b.d);
+const dv=(a,b)=>fr(a.n*b.d,a.d*b.n);
+const ZERO=fr(0,1),ONE=fr(1,1);
+const fs=f=>f.n+'/'+f.d;
+
+function calc(n0,sex){
+  const n={...n0};
+  if(sex==='M')n.husband=0;else n.wife=0;
+  const P=k=>(n[k]||0)>0;
+  const blocked={};
+  const B=(ks,why)=>ks.forEach(k=>{if(P(k)&&!blocked[k])blocked[k]=why;});
+  const A=k=>P(k)&&!blocked[k];
+  const c=k=>A(k)?n[k]:0;
+  const notes=[];
+  const sibs=['fbro','fsis','cbro','csis','ubro','usis'];
+  const remote=['fbroSon','cbroSon','funcle','cuncle','funcleSon'];
+  const desc=P('son')||P('dau')||P('gson')||P('gdau');
+  const maleDesc=P('son')||P('gson');
+  const femaleDesc=P('dau')||P('gdau');
+  const sibTotal=sibs.reduce((s,k)=>s+(n[k]||0),0);
+
+  /* hajb: who is excluded by whom */
+  if(P('son'))B(['gson','gdau'],'son');
+  if(n.dau>=2&&!P('gson'))B(['gdau'],'twoDau');
+  if(maleDesc)B(['fbro','fsis','cbro','csis',...remote],'maleDesc');
+  if(desc)B(['ubro','usis'],'desc');
+  if(P('father'))B(['gfather','gmotherP',...sibs,...remote],'father');
+  if(!P('father')&&P('gfather'))B([...sibs,...remote],'gfather');
+  if(P('mother'))B(['gmotherP','gmotherM'],'mother');
+  const fsisMag=A('fsis')&&!A('fbro')&&femaleDesc;
+  if(A('fbro'))B(['cbro','csis'],'fbro');
+  if(fsisMag)B(['cbro','csis'],'fsisMag');
+  if(A('fsis')&&!A('fbro')&&!fsisMag&&n.fsis>=2&&!A('cbro'))B(['csis'],'twoFsis');
+
+  /* ashab-ul-furud */
+  const F={},kind={};
+  const setF=(k,f)=>{F[k]=f;kind[k]='f';};
+  if(sex==='F'&&A('husband')){const f=desc?fr(1,4):fr(1,2);setF('husband',f);notes.push({c:'spouse',p:{who:'husband',f:fs(f),desc}});}
+  if(sex==='M'&&A('wife')){const f=desc?fr(1,8):fr(1,4);setF('wife',f);notes.push({c:'spouse',p:{who:'wife',f:fs(f),desc}});}
+  if(A('mother')){
+    if(desc||sibTotal>=2){setF('mother',fr(1,6));notes.push({c:'mother6',p:{why:desc?'desc':'sibs'}});}
+    else{
+      const alive=KEYS.filter(A);
+      const onlyCore=alive.every(k=>['husband','wife','father','mother'].includes(k));
+      if(onlyCore&&A('father')&&(A('husband')||A('wife'))){
+        const sp=F.husband||F.wife;
+        setF('mother',mul(sub(ONE,sp),fr(1,3)));
+        notes.push({c:'umar'});
+      }else setF('mother',fr(1,3));
+    }
+  }
+  const fa=A('father')?'father':(A('gfather')?'gfather':null);
+  if(fa){
+    if(maleDesc){setF(fa,fr(1,6));notes.push({c:'fa6'});}
+    else if(femaleDesc){setF(fa,fr(1,6));notes.push({c:'faA'});}
+    else notes.push({c:'faO'});
+  }
+  if(A('dau')&&!A('son'))setF('dau',n.dau===1?fr(1,2):fr(2,3));
+  if(A('gdau')&&!A('gson')){
+    if(n.dau===0)setF('gdau',n.gdau===1?fr(1,2):fr(2,3));
+    else if(n.dau===1)setF('gdau',fr(1,6));
+  }
+  if(A('fsis')&&!A('fbro')&&!fsisMag)setF('fsis',n.fsis===1?fr(1,2):fr(2,3));
+  const csisMag=A('csis')&&!A('cbro')&&!A('fsis')&&femaleDesc;
+  if(A('csis')&&!A('cbro')&&!csisMag){
+    if(A('fsis')){if(n.fsis===1)setF('csis',fr(1,6));}
+    else setF('csis',n.csis===1?fr(1,2):fr(2,3));
+  }
+  const uc=c('ubro')+c('usis');
+  if(uc>0){
+    const tot=uc===1?fr(1,6):fr(1,3);
+    if(c('ubro'))setF('ubro',mul(tot,fr(c('ubro'),uc)));
+    if(c('usis'))setF('usis',mul(tot,fr(c('usis'),uc)));
+  }
+  const gm=['gmotherP','gmotherM'].filter(A);
+  gm.forEach(k=>setF(k,fr(1,6*gm.length)));
+
+  let sum=ZERO;for(const k in F)sum=add(sum,F[k]);
+  const R=sub(ONE,sum);
+
+  /* asaba: the first group in order takes the residue */
+  let units=[];
+  if(A('son'))units=[['son',2],['dau',1]];
+  else if(A('gson'))units=[['gson',2],['gdau',1]];
+  else if(fa&&!maleDesc)units=[[fa,1]];
+  else if(A('fbro'))units=[['fbro',2],['fsis',1]];
+  else if(fsisMag)units=[['fsis',1]];
+  else if(A('cbro'))units=[['cbro',2],['csis',1]];
+  else if(csisMag)units=[['csis',1]];
+  else{for(const k of remote){if(A(k)){units=[[k,1]];break;}}}
+  units=units.filter(([k])=>A(k));
+
+  const final={},how={};
+  if(sum.n>sum.d){
+    for(const k in F){final[k]=dv(F[k],sum);how[k]='f';}
+    notes.push({c:'aul',p:{f:fs(sum)}});
+    units.forEach(([k])=>{if(!final[k])blocked[k]='noResidue';});
+  }else{
+    for(const k in F){final[k]=F[k];how[k]='f';}
+    if(units.length){
+      if(R.n>0){
+        const tu=units.reduce((s,[k,u])=>s+n[k]*u,0);
+        units.forEach(([k,u])=>{
+          final[k]=add(final[k]||ZERO,mul(R,fr(n[k]*u,tu)));
+          how[k]=F[k]?'fa':'a';
+        });
+      }else units.forEach(([k])=>{if(!final[k])blocked[k]='noResidue';});
+    }else if(R.n>0){
+      const sp=['husband','wife'].filter(k=>F[k]);
+      const others=Object.keys(F).filter(k=>!sp.includes(k));
+      if(others.length){
+        let os=ZERO;others.forEach(k=>{os=add(os,F[k]);});
+        let ss=ZERO;sp.forEach(k=>{ss=add(ss,F[k]);});
+        const pool=sub(ONE,ss);
+        others.forEach(k=>{final[k]=mul(dv(F[k],os),pool);how[k]='r';});
+        notes.push({c:'radd'});
+      }else if(sp.length){
+        final[sp[0]]=ONE;how[sp[0]]='r';notes.push({c:'raddSpouse'});
+      }
+    }
+  }
+  KEYS.forEach(k=>{
+    if(A(k)&&!(final[k]&&final[k].n>0)&&!blocked[k])blocked[k]=units.length?'nearer':'noResidue';
+  });
+  const rows=KEYS.filter(k=>final[k]&&final[k].n>0).map(k=>({k,count:n[k],share:final[k],how:how[k]}));
+  const N=rows.reduce((l,r)=>l/gcd(l,r.share.d)*r.share.d,1);
+  rows.forEach(r=>{r.parts=r.share.n*(N/r.share.d);});
+  const blockedList=KEYS.filter(k=>P(k)&&blocked[k]).map(k=>({k,why:blocked[k]}));
+  const anyHeir=KEYS.some(P);
+  if(!rows.length)notes.push({c:'noHeirs'});
+  return{rows,N,blocked:blockedList,notes,empty:!rows.length,anyHeir};
+}
+/*CALC-END*/
+
+const DAL={
+d11a:{t:'q',ar:'يُوصِيكُمُ اللَّهُ فِي أَوْلَادِكُمْ ۖ لِلذَّكَرِ مِثْلُ حَظِّ الْأُنثَيَيْنِ',ur:'اللہ تمہیں تمہاری اولاد (کی وراثت) کے بارے میں حکم دیتا ہے کہ ایک بیٹے کا حصہ دو بیٹیوں کے برابر ہے۔',src:'سورۃ النساء 4:11'},
+d_half:{t:'q',ar:'وَإِن كَانَتْ وَاحِدَةً فَلَهَا النِّصْفُ',ur:'اور اگر (بیٹی) صرف ایک ہو تو اس کے لیے آدھا حصہ ہے۔',src:'سورۃ النساء 4:11'},
+d_two:{t:'q',ar:'فَإِن كُنَّ نِسَاءً فَوْقَ اثْنَتَيْنِ فَلَهُنَّ ثُلُثَا مَا تَرَكَ',ur:'پھر اگر (بیٹیاں) دو سے زیادہ ہوں تو ان کے لیے ترکے کا دو تہائی ہے۔',src:'سورۃ النساء 4:11'},
+d_sad:{t:'h',ar:'أَعْطِهِمَا الثُّلُثَيْنِ وَأَعْطِ أُمَّهُمَا الثُّمُنَ وَمَا بَقِيَ فَهُوَ لَكَ',ur:'(دو بیٹیوں کے لیے) ان دونوں کو دو تہائی دو، ان کی ماں کو آٹھواں حصہ دو اور جو بچے وہ تمہارا ہے۔',src:'سنن ابی داود، جامع ترمذی (حضرت سعد بن ربیع رضی اللہ عنہ کی دو بیٹیوں کا واقعہ)'},
+gd6:{t:'h',ar:'لِلاِبْنَةِ النِّصْفُ وَلِابْنَةِ ابْنٍ السُّدُسُ تَكْمِلَةَ الثُّلُثَيْنِ وَمَا بَقِيَ فَلِلْأُخْتِ',ur:'بیٹی کے لیے آدھا، پوتی کے لیے چھٹا حصہ (دو تہائی پورا کرنے کے لیے) اور جو بچے وہ بہن کے لیے ہے۔',src:'صحیح البخاری 6736 (نبوی فیصلہ، بروایت حضرت عبد اللہ بن مسعود رضی اللہ عنہ)'},
+gc:{t:'i',ar:'وَلَدُ الِابْنِ بِمَنْزِلَةِ الِابْنِ عِنْدَ عَدَمِهِ',ur:'بیٹا نہ ہو تو پوتا اور پوتی، بیٹے اور بیٹی کے حکم میں ہیں۔',src:'اجماعِ امت'},
+asaba:{t:'h',ar:'أَلْحِقُوا الْفَرَائِضَ بِأَهْلِهَا فَمَا بَقِيَ فَهُوَ لِأَوْلَى رَجُلٍ ذَكَرٍ',ur:'مقررہ حصے ان کے حق داروں کو دے دو، پھر جو باقی بچے وہ میت کے سب سے قریبی مرد رشتے دار کا ہے۔',src:'صحیح البخاری 6746، صحیح مسلم 1615'},
+h2:{t:'q',ar:'وَلَكُمْ نِصْفُ مَا تَرَكَ أَزْوَاجُكُمْ إِن لَّمْ يَكُن لَّهُنَّ وَلَدٌ',ur:'اور تمہارے لیے اس (مال) کا آدھا ہے جو تمہاری بیویاں چھوڑ جائیں، اگر ان کی کوئی اولاد نہ ہو۔',src:'سورۃ النساء 4:12'},
+h4:{t:'q',ar:'فَإِن كَانَ لَهُنَّ وَلَدٌ فَلَكُمُ الرُّبُعُ مِمَّا تَرَكْنَ',ur:'پھر اگر ان کی کوئی اولاد ہو تو تمہارے لیے اس (مال) کا چوتھائی ہے جو وہ چھوڑیں۔',src:'سورۃ النساء 4:12'},
+w4:{t:'q',ar:'وَلَهُنَّ الرُّبُعُ مِمَّا تَرَكْتُمْ إِن لَّمْ يَكُن لَّكُمْ وَلَدٌ',ur:'اور ان (بیویوں) کے لیے اس (مال) کا چوتھائی ہے جو تم چھوڑ جاؤ، اگر تمہاری کوئی اولاد نہ ہو۔',src:'سورۃ النساء 4:12'},
+w8:{t:'q',ar:'فَإِن كَانَ لَكُمْ وَلَدٌ فَلَهُنَّ الثُّمُنُ مِمَّا تَرَكْتُم',ur:'پھر اگر تمہاری اولاد ہو تو ان کے لیے اس (مال) کا آٹھواں حصہ ہے جو تم چھوڑو۔',src:'سورۃ النساء 4:12'},
+f6:{t:'q',ar:'وَلِأَبَوَيْهِ لِكُلِّ وَاحِدٍ مِّنْهُمَا السُّدُسُ مِمَّا تَرَكَ إِن كَانَ لَهُ وَلَدٌ',ur:'اور میت کے ماں باپ میں سے ہر ایک کے لیے ترکے کا چھٹا حصہ ہے، اگر میت کی اولاد ہو۔',src:'سورۃ النساء 4:11'},
+m3:{t:'q',ar:'فَإِن لَّمْ يَكُن لَّهُ وَلَدٌ وَوَرِثَهُ أَبَوَاهُ فَلِأُمِّهِ الثُّلُثُ',ur:'پھر اگر میت کی اولاد نہ ہو اور اس کے ماں باپ ہی وارث ہوں تو ماں کے لیے تہائی ہے۔',src:'سورۃ النساء 4:11'},
+m6s:{t:'q',ar:'فَإِن كَانَ لَهُ إِخْوَةٌ فَلِأُمِّهِ السُّدُسُ',ur:'پھر اگر میت کے (ایک سے زیادہ) بھائی بہن ہوں تو ماں کے لیے چھٹا حصہ ہے۔',src:'سورۃ النساء 4:11'},
+mU:{t:'i',ar:'لِلْأُمِّ ثُلُثُ مَا بَقِيَ بَعْدَ فَرْضِ أَحَدِ الزَّوْجَيْنِ',ur:'شوہر یا بیوی کا حصہ نکالنے کے بعد جو بچے اس کا تہائی ماں کو ملتا ہے، تاکہ باپ کو ماں سے دگنا ملے۔ یہ فقہاء (جمہور صحابہ کرام، ائمۂ اربعہ) کا مسلک اور حنفی فتویٰ ہے۔',src:'فقہی استدلال (آیت 4:11 پر مبنی)'},
+gfN:{t:'i',ar:'الْجَدُّ أَبٌ عِنْدَ عَدَمِ الْأَبِ',ur:'باپ نہ ہو تو دادا، باپ کی جگہ ہے۔ یہی حضرت ابوبکر صدیق، حضرت ابن عباس اور حضرت ابن زبیر رضی اللہ عنہم کا قول ہے اور حنفی مذہب ہے۔',src:'صحیح البخاری، باب میراث الجد مع الأب والإخوة'},
+s_half:{t:'q',ar:'إِنِ امْرُؤٌ هَلَكَ لَيْسَ لَهُ وَلَدٌ وَلَهُ أُخْتٌ فَلَهَا نِصْفُ مَا تَرَكَ',ur:'اگر کوئی شخص مر جائے، اس کی اولاد نہ ہو اور اس کی ایک بہن ہو تو اس کے لیے ترکے کا آدھا ہے۔',src:'سورۃ النساء 4:176'},
+s_two:{t:'q',ar:'فَإِن كَانَتَا اثْنَتَيْنِ فَلَهُمَا الثُّلُثَانِ مِمَّا تَرَكَ',ur:'پھر اگر (بہنیں) دو ہوں تو ان کے لیے ترکے کا دو تہائی ہے۔',src:'سورۃ النساء 4:176'},
+sib_a:{t:'q',ar:'وَإِن كَانُوا إِخْوَةً رِّجَالًا وَنِسَاءً فَلِلذَّكَرِ مِثْلُ حَظِّ الْأُنثَيَيْنِ',ur:'اور اگر بھائی بہن مرد اور عورتیں (مل کر) ہوں تو مرد کا حصہ دو عورتوں کے برابر ہے۔',src:'سورۃ النساء 4:176'},
+c6:{t:'i',ar:'لِلْأُخْتِ لِأَبٍ مَعَ الشَّقِيقَةِ السُّدُسُ تَكْمِلَةَ الثُّلُثَيْنِ',ur:'حقیقی بہن کے ساتھ علاتی (باپ شریک) بہن کے لیے چھٹا حصہ ہے تاکہ دو تہائی پورا ہو جائے۔ یہ بیٹی کے ساتھ پوتی والے حدیثی فیصلے پر قیاس ہے۔',src:'فقہی استدلال'},
+cN:{t:'i',ar:'أَوْلَادُ الْأَبِ كَالْأَشِقَّاءِ عِنْدَ فَقْدِهِمْ',ur:'حقیقی بہن بھائی نہ ہوں تو علاتی (باپ شریک) بہن بھائی انہی کے حکم میں ہیں۔',src:'اجماعِ امت'},
+u12:{t:'q',ar:'وَإِن كَانَ رَجُلٌ يُورَثُ كَلَالَةً أَوِ امْرَأَةٌ وَلَهُ أَخٌ أَوْ أُخْتٌ فَلِكُلِّ وَاحِدٍ مِّنْهُمَا السُّدُسُ ۚ فَإِن كَانُوا أَكْثَرَ مِن ذَٰلِكَ فَهُمْ شُرَكَاءُ فِي الثُّلُثِ',ur:'اور اگر کوئی مرد یا عورت ایسی حالت میں وارث بنائی جائے کہ نہ ماں باپ ہوں نہ اولاد، اور اس کا (ماں شریک) ایک بھائی یا بہن ہو تو ان میں سے ہر ایک کے لیے چھٹا حصہ ہے، اور اگر اس سے زیادہ ہوں تو سب تہائی میں شریک ہیں۔',src:'سورۃ النساء 4:12'},
+gm6:{t:'h',ar:'أَنَّ النَّبِيَّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ أَعْطَى الْجَدَّةَ السُّدُسَ',ur:'نبی کریم ﷺ نے دادی (اور نانی) کو چھٹا حصہ دیا۔',src:'سنن (ابی داود، ترمذی) بروایت حضرت مغیرہ بن شعبہ اور حضرت محمد بن مسلمہ رضی اللہ عنہما'},
+radd:{t:'q',ar:'وَأُولُو الْأَرْحَامِ بَعْضُهُمْ أَوْلَىٰ بِبَعْضٍ فِي كِتَابِ اللَّهِ',ur:'اور رشتہ دار اللہ کی کتاب میں ایک دوسرے کے زیادہ حق دار ہیں۔ اسی لیے حصے پورے کرنے کے بعد بچا ہوا مال حصہ داروں پر ان کے حصوں کے مطابق لوٹایا جاتا ہے (رد)۔',src:'سورۃ الأنفال 8:75'}
+};
+function dalilKeys(x,n){
+  const k=x.k,g=q=>n[q]||0;
+  const desc=g('son')||g('dau')||g('gson')||g('gdau');
+  const sib=g('fbro')+g('fsis')+g('cbro')+g('csis')+g('ubro')+g('usis');
+  let o=[];
+  switch(k){
+    case 'husband':o=[desc?'h4':'h2'];break;
+    case 'wife':o=[desc?'w8':'w4'];break;
+    case 'mother':
+      if(desc)o=['f6'];
+      else if(sib>=2)o=['m6s'];
+      else if(g('father')&&(g('husband')||g('wife')))o=['m3','mU'];
+      else o=['m3'];
+      break;
+    case 'father':o=x.how==='f'?['f6']:x.how==='fa'?['f6','asaba']:['asaba'];break;
+    case 'gfather':o=x.how==='f'?['gfN','f6']:x.how==='fa'?['gfN','f6','asaba']:['gfN','asaba'];break;
+    case 'son':o=['d11a'];break;
+    case 'dau':
+      if(g('son'))o=['d11a'];
+      else o=g('dau')===1?['d_half']:g('dau')===2?['d_two','d_sad']:['d_two'];
+      break;
+    case 'gson':o=['gc','asaba'];break;
+    case 'gdau':
+      if(g('gson'))o=['gc','d11a'];
+      else if(g('dau')===1)o=['gd6'];
+      else o=['gc',g('gdau')===1?'d_half':'d_two'];
+      break;
+    case 'fbro':o=['sib_a','asaba'];break;
+    case 'fsis':
+      if(g('fbro'))o=['sib_a'];
+      else if(x.how==='f')o=[g('fsis')===1?'s_half':'s_two'];
+      else o=['gd6'];
+      break;
+    case 'cbro':o=['cN','sib_a','asaba'];break;
+    case 'csis':
+      if(g('cbro'))o=['cN','sib_a'];
+      else if(x.how==='f'&&g('fsis')===1)o=['c6'];
+      else if(x.how==='f')o=['cN',g('csis')===1?'s_half':'s_two'];
+      else o=['cN','gd6'];
+      break;
+    case 'ubro':case 'usis':o=['u12'];break;
+    case 'gmotherP':case 'gmotherM':o=['gm6'];break;
+    default:o=['asaba'];
+  }
+  if(x.how==='r')o.push('radd');
+  return o;
+}
+const X={
+en:{share:'Share on WhatsApp',print:'Print / PDF',tashihT:'Tashih (share per person)',tashih:T=>`Corrected total: ${T} parts. Each person's share:`,priv:'Privacy'},
+ro:{share:'WhatsApp par bhejein',print:'Print / PDF',tashihT:'Tashih (har fard ka hissa)',tashih:T=>`Tashih ke baad kul ${T} hissay. Har fard ka hissa:`,priv:'Raazdari'},
+ur:{share:'واٹس ایپ پر بھیجیں',print:'پرنٹ / PDF',tashihT:'تصحیح (ہر فرد کا حصہ)',tashih:T=>`تصحیح کے بعد کل ${T} حصے۔ ہر فرد کا حصہ:`,priv:'رازداری'},
+ar:{share:'مشاركة عبر واتساب',print:'طباعة / PDF',tashihT:'التصحيح (نصيب كل فرد)',tashih:T=>`بعد التصحيح: المجموع ${T} سهمًا. نصيب كل فرد:`,priv:'الخصوصية'}};
+const DHEAD={q:{ur:'قرآنی دلیل · QURAN',ar:'دليل من القرآن · QURAN',en:'Quran',ro:'Quran'},h:{ur:'حدیثِ نبوی ﷺ · HADITH',ar:'دليل من الحديث · HADITH',en:'Hadith',ro:'Hadees'},i:{ur:'اجماع / استدلال · IJMA',ar:'إجماع / استدلال · IJMA',en:'Ijma / Reasoning',ro:'Ijma / Istidlal'}};
+function dalilHtml(x,n){
+  const keys=[...new Set(dalilKeys(x,n))];
+  const cls={q:'quran',h:'hadith',i:'ijma'};
+  return keys.map(id=>{const d=DAL[id];return `<div class="daleel daleel-${cls[d.t]}"><div class="daleel-heading">${DHEAD[d.t][S.lang]}</div><p class="arabic" lang="ar" dir="rtl">${d.ar}</p><p class="translation" lang="ur" dir="rtl">${d.ur}</p><div class="source" dir="rtl">${d.src}</div></div>`}).join('');
+}
+const X2={
+en:{go:'View result',amtL:'Amount',th:['Heir','Count','Per person']},
+ro:{go:'Nateeja dekhein',amtL:'Raqam',th:['Waris','Tadaad','Har fard ka hissa']},
+ur:{go:'نتیجہ دیکھیں',amtL:'رقم',th:['وارث','تعداد','فی کس حصہ']},
+ar:{go:'عرض النتيجة',amtL:'المبلغ',th:['الوارث','العدد','نصيب الفرد']}};
+Object.keys(X2).forEach(l=>Object.assign(X[l],X2[l]));
+const T={
+ro:{dir:'ltr',htmlLang:'ur-Latn',name:"I'zaz al-Mirath",sub:'Fiqh-e-Hanafi ke mutabiq hissay',
+ demo:'Ye ek misaal hai. Apni raqam aur waris daal kar nateeja dekhein.',reset:'Khali karein',
+ s1:'Marhoom',male:'Mard',female:'Aurat',
+ s2:'Tarka',estate:'Kul tarka (Rs)',funeral:'Tajheez o takfeen ka kharch',debts:'Qarz',will:'Wasiyyat (agar ho)',
+ s3:'Waris',
+ g:{spouse:'Zawj',children:'Aulad',parents:'Walidain aur ajdad',sibs:'Bhai behan',far:'Door ke rishtay (asaba)'},
+ farHint:'Ye tab hissa paate hain jab upar ke qareebi waris na hon.',
+ res:'Nateeja',dist:'Waris mein taqseem hone wali raqam',
+ bTotal:'Kul tarka',bFuneral:'Tajheez o takfeen',bDebts:'Qarz',bWill:'Wasiyyat (hadd: tihayi)',bNet:'Taqseem ke liye',
+ parts:n=>`Tarka ${n} hissay mein banta gaya.`,unit:'hissay',each:'har ek',
+ how:{f:'Fard',a:'Asaba',fa:'Fard + Asaba',r:'Radd'},
+ blockedT:'Jinhein hissa nahi milega',notesT:'Hisaab ke qawaid',limitsT:'Is app ki hadood',
+ limits:'Ye app in surton ko shamil nahi karti: pait ka bachcha (hamal), lapata shakhs, parpota jaisay door ke ajdad aur aulad, dhawil-arham, aur wo surat jis mein koi waris qatl ya deen ke farq se mehroom ho. Aisi surat mein aalim se rujoo karein.',
+ disc:'Ye hisaab sirf andaza hai. Asal taqseem se pehle kisi mustanad mufti ya aalim se tasdeeq zaroor karwayein.',
+ copy:'Nateeja copy karein',copied:'Copy ho gaya',copyFail:'Copy nahi hua. Neeche se khud copy karein.',
+ willWarn:'Wasiyyat tihayi se zyada thi, isliye sirf tihayi tak li gayi.',
+ needEstate:'Raqam dekhne ke liye kul tarka daalein.',minus:'Kam karein',plus:'Zyada karein',
+ k:{husband:'Shohar',wife:'Biwi (biwiyan)',son:'Beta',dau:'Beti',gson:'Pota (bete ka beta)',gdau:'Poti (bete ki beti)',father:'Walid',mother:'Walida',gfather:'Dada',gmotherP:'Dadi (walid ki maa)',gmotherM:'Nani (walida ki maa)',fbro:'Haqiqi bhai',fsis:'Haqiqi behan',cbro:'Aillati bhai (sirf baap shareek)',csis:'Aillati behan (sirf baap shareek)',ubro:'Akhyafi bhai (sirf maa shareek)',usis:'Akhyafi behan (sirf maa shareek)',fbroSon:'Haqiqi bhai ka beta',cbroSon:'Aillati bhai ka beta',funcle:'Haqiqi chacha',cuncle:'Aillati chacha (baap ka aillati bhai)',funcleSon:'Haqiqi chacha ka beta'},
+ why:{son:'beta maujood hai',maleDesc:'beta ya pota maujood hai',desc:'aulad maujood hai',father:'walid maujood hain',gfather:'dada maujood hain (Imam Abu Hanifa ke qaul par)',mother:'walida maujood hain',twoDau:'do ya zyada betiyan maujood hain',fbro:'haqiqi bhai maujood hai',fsisMag:'haqiqi behan betiyon ke saath asaba ban gayi',twoFsis:'do haqiqi behnen 2/3 le chuki hain',nearer:'qareebi asaba maujood hain',noResidue:'fard hisson ke baad kuch nahi bacha'},
+ n:{
+  spouse:p=>p.who==='husband'?`Shohar ka hissa ${p.f}: ${p.desc?'marhooma ki aulad maujood hai':'marhooma ki koi aulad nahi'}.`:`Biwi (biwiyon) ka kul hissa ${p.f}: ${p.desc?'marhoom ki aulad maujood hai':'marhoom ki koi aulad nahi'}.`,
+  mother6:p=>p.why==='desc'?'Walida ko 1/6: marhoom ki aulad maujood hai.':'Walida ko 1/6: do ya zyada bhai behan maujood hain (chahe unhein hissa na milay).',
+  umar:()=>'Walida ko zawj ka hissa nikalne ke baad baqi ka 1/3, kyunke sirf walidain aur zawj waris hain.',
+  fa6:()=>'Walid (ya dada) ko 1/6: beta ya pota maujood hai.',
+  faA:()=>'Walid (ya dada) ko 1/6 aur bacha hua bhi asaba ke tor par, kyunke sirf beti ya poti hai.',
+  faO:()=>'Walid (ya dada) asaba hain: fard hisson ke baad baqi sab unhein milta hai.',
+  aul:p=>`Hisson ka majmua ${p.f} (1 se zyada) tha, isliye "aul" ke tahat sab hissay yaksan nisbat se kam kiye gaye.`,
+  radd:()=>'Hissay poore na honay se bachi hui raqam zawj ke ilawa baaqi fard walon ko unke hissay ke tanasub se wapas (radd) ki gayi.',
+  raddSpouse:()=>'Koi aur waris na hone se baqi raqam bhi zawj ko di gayi.',
+  noHeirs:()=>'Koi waris nahi chuna gaya. Is surat mein dhawil-arham ya baitul-mal ka masla hota hai, kisi aalim se poochein.'
+ }},
+en:{dir:'ltr',htmlLang:'en',name:"I'zaz al-Mirath",sub:'Shares according to Hanafi fiqh',
+ demo:'This is an example. Enter your own amounts and heirs to see the result.',reset:'Clear all',
+ s1:'Deceased',male:'Male',female:'Female',
+ s2:'Estate',estate:'Total estate (Rs)',funeral:'Funeral and burial costs',debts:'Debts',will:'Will (if any)',
+ s3:'Heirs',
+ g:{spouse:'Spouse',children:'Children',parents:'Parents and grandparents',sibs:'Siblings',far:'Distant male relatives (asaba)'},
+ farHint:'They inherit only when none of the closer heirs above exist.',
+ res:'Result',dist:'Amount to be divided among heirs',
+ bTotal:'Total estate',bFuneral:'Funeral and burial',bDebts:'Debts',bWill:'Will (limit: one third)',bNet:'To divide',
+ parts:n=>`The estate is divided into ${n} parts.`,unit:'parts',each:'each',
+ how:{f:'Fixed share',a:'Residuary',fa:'Fixed + residuary',r:'Radd'},
+ blockedT:'Heirs who receive nothing',notesT:'How it was worked out',limitsT:'What this app does not cover',
+ limits:'Not covered: an unborn child, a missing person, distant ancestors and descendants such as a great-grandson, distant kin (dhawil-arham), and an heir barred by homicide or difference of religion. Ask a scholar in such cases.',
+ disc:'This is an estimate only. Please confirm with a qualified mufti or scholar before dividing the estate.',
+ copy:'Copy result',copied:'Copied',copyFail:'Could not copy. Copy from the box below.',
+ willWarn:'The will was more than one third, so only one third was used.',
+ needEstate:'Enter the total estate to see amounts.',minus:'Decrease',plus:'Increase',
+ k:{husband:'Husband',wife:'Wife (wives)',son:'Son',dau:'Daughter',gson:"Son's son",gdau:"Son's daughter",father:'Father',mother:'Mother',gfather:'Paternal grandfather',gmotherP:"Paternal grandmother (father's mother)",gmotherM:"Maternal grandmother (mother's mother)",fbro:'Full brother',fsis:'Full sister',cbro:'Half-brother (same father)',csis:'Half-sister (same father)',ubro:'Half-brother (same mother)',usis:'Half-sister (same mother)',fbroSon:"Full brother's son",cbroSon:"Half-brother's son (same father)",funcle:'Full paternal uncle',cuncle:"Paternal uncle (father's half-brother)",funcleSon:"Full paternal uncle's son"},
+ why:{son:'a son exists',maleDesc:'a son or grandson exists',desc:'a child exists',father:'the father exists',gfather:"the grandfather exists (Imam Abu Hanifa's view)",mother:'the mother exists',twoDau:'two or more daughters exist',fbro:'a full brother exists',fsisMag:'the full sister became a residuary heir with the daughters',twoFsis:'two full sisters already took 2/3',nearer:'a closer residuary heir exists',noResidue:'nothing was left after the fixed shares'},
+ n:{
+  spouse:p=>p.who==='husband'?`Husband's share ${p.f}: ${p.desc?'the deceased has children':'the deceased has no children'}.`:`Wife's (wives') total share ${p.f}: ${p.desc?'the deceased has children':'the deceased has no children'}.`,
+  mother6:p=>p.why==='desc'?'Mother gets 1/6: the deceased has children.':'Mother gets 1/6: two or more siblings exist (even if they receive nothing).',
+  umar:()=>"Mother gets 1/3 of what remains after the spouse's share, because only the parents and a spouse are heirs.",
+  fa6:()=>'Father (or grandfather) gets 1/6: a son or grandson exists.',
+  faA:()=>'Father (or grandfather) gets 1/6 plus the remainder as residuary heir, because the descendants are only female.',
+  faO:()=>'Father (or grandfather) is the residuary heir and takes what remains after the fixed shares.',
+  aul:p=>`The fixed shares add up to ${p.f} (more than 1), so every share was reduced in the same proportion (aul).`,
+  radd:()=>'The leftover was returned (radd) to the fixed-share heirs other than the spouse, in proportion to their shares.',
+  raddSpouse:()=>'With no other heir, the remainder also went to the spouse.',
+  noHeirs:()=>'No heirs selected. In this case distant kin or the public treasury may inherit; ask a scholar.'
+ }},
+ar:{dir:'rtl',htmlLang:'ar',name:'إعزاز الميراث',sub:'وفق المذهب الحنفي',
+ demo:'هذا مثال. أدخل المبلغ والورثة لترى النتيجة.',reset:'تفريغ الكل',
+ s1:'المتوفى',male:'ذكر',female:'أنثى',
+ s2:'التركة',estate:'إجمالي التركة (روبية)',funeral:'نفقات التجهيز والتكفين',debts:'الديون',will:'الوصية (إن وجدت)',
+ s3:'الورثة',
+ g:{spouse:'الزوجان',children:'الأولاد',parents:'الأبوان والأجداد',sibs:'الإخوة والأخوات',far:'العصبات الأبعد'},
+ farHint:'لا يرثون إلا إذا لم يوجد الورثة الأقرب أعلاه.',
+ res:'النتيجة',dist:'المبلغ القابل للتقسيم على الورثة',
+ bTotal:'إجمالي التركة',bFuneral:'التجهيز والتكفين',bDebts:'الديون',bWill:'الوصية (الحد: الثلث)',bNet:'للتقسيم',
+ parts:n=>`قُسمت التركة إلى ${n} سهمًا.`,unit:'أسهم',each:'للفرد',
+ how:{f:'فرض',a:'تعصيب',fa:'فرض + تعصيب',r:'ردّ'},
+ blockedT:'من لا يرث',notesT:'قواعد الحساب',limitsT:'حدود هذا التطبيق',
+ limits:'لا يشمل هذا التطبيق: الحمل، والمفقود، والأجداد والأولاد الأبعد كابن ابن الابن، وذوي الأرحام، ومن مُنع من الإرث بالقتل أو باختلاف الدين. في هذه الحالات راجع عالمًا.',
+ disc:'هذا الحساب تقديري فقط. تأكد من مفتٍ أو عالم معتمد قبل التقسيم الفعلي.',
+ copy:'نسخ النتيجة',copied:'تم النسخ',copyFail:'تعذّر النسخ. انسخ من الأسفل يدويًا.',
+ willWarn:'الوصية أكثر من الثلث، فاعتُمد الثلث فقط.',
+ needEstate:'أدخل إجمالي التركة لعرض المبالغ.',minus:'إنقاص',plus:'زيادة',
+ k:{husband:'الزوج',wife:'الزوجة (الزوجات)',son:'الابن',dau:'البنت',gson:'ابن الابن',gdau:'بنت الابن',father:'الأب',mother:'الأم',gfather:'الجد',gmotherP:'الجدة (أم الأب)',gmotherM:'الجدة (أم الأم)',fbro:'الأخ الشقيق',fsis:'الأخت الشقيقة',cbro:'الأخ لأب',csis:'الأخت لأب',ubro:'الأخ لأم',usis:'الأخت لأم',fbroSon:'ابن الأخ الشقيق',cbroSon:'ابن الأخ لأب',funcle:'العم الشقيق',cuncle:'العم لأب',funcleSon:'ابن العم الشقيق'},
+ why:{son:'لوجود الابن',maleDesc:'لوجود الابن أو ابن الابن',desc:'لوجود الفرع الوارث',father:'لوجود الأب',gfather:'لوجود الجد (على قول الإمام أبي حنيفة)',mother:'لوجود الأم',twoDau:'لوجود بنتين فأكثر',fbro:'لوجود الأخ الشقيق',fsisMag:'لأن الأخت الشقيقة صارت عصبة مع البنات',twoFsis:'لأن الأختين الشقيقتين أخذتا الثلثين',nearer:'لوجود عصبة أقرب',noResidue:'لأنه لم يبقَ شيء بعد الفروض'},
+ n:{
+  spouse:p=>p.who==='husband'?`نصيب الزوج ${p.f}: ${p.desc?'لوجود فرع وارث للمتوفاة':'لعدم وجود فرع وارث للمتوفاة'}.`:`نصيب الزوجة (الزوجات) ${p.f}: ${p.desc?'لوجود فرع وارث للمتوفى':'لعدم وجود فرع وارث للمتوفى'}.`,
+  mother6:p=>p.why==='desc'?'للأم السدس: لوجود فرع وارث للمتوفى.':'للأم السدس: لوجود اثنين فأكثر من الإخوة والأخوات (وإن حُجبوا).',
+  umar:()=>'للأم ثلث الباقي بعد نصيب الزوج أو الزوجة، لأن الورثة هم الأبوان وأحد الزوجين فقط.',
+  fa6:()=>'للأب (أو الجد) السدس: لوجود الابن أو ابن الابن.',
+  faA:()=>'للأب (أو الجد) السدس مع الباقي تعصيبًا، لأن الفرع الوارث إناث فقط.',
+  faO:()=>'الأب (أو الجد) عصبة: يأخذ الباقي بعد أصحاب الفروض.',
+  aul:p=>`مجموع الفروض ${p.f} (أكثر من واحد)، فنُقصت الحصص بنسبة واحدة وهو «العول».`,
+  radd:()=>'ما بقي بعد الفروض رُدّ على أصحاب الفروض غير الزوجين بنسبة فروضهم.',
+  raddSpouse:()=>'لعدم وجود وارث آخر رُدّ الباقي على الزوج أو الزوجة.',
+  noHeirs:()=>'لم يُختر أي وارث. في هذه الحالة يُنظر في ذوي الأرحام أو بيت المال، فاسأل عالمًا.'
+ }},
+ur:{dir:'rtl',htmlLang:'ur',name:'اعزاز المیراث',sub:'فقہ حنفی کے مطابق حصے',
+ demo:'یہ ایک مثال ہے۔ اپنی رقم اور وارث درج کر کے نتیجہ دیکھیں۔',reset:'خالی کریں',
+ s1:'مرحوم',male:'مرد',female:'عورت',
+ s2:'ترکہ',estate:'کل ترکہ (روپے)',funeral:'تجہیز و تکفین کا خرچ',debts:'قرض',will:'وصیت (اگر ہو)',
+ s3:'وارث',
+ g:{spouse:'زوجین',children:'اولاد',parents:'والدین اور اجداد',sibs:'بھائی بہن',far:'دور کے رشتے (عصبہ)'},
+ farHint:'یہ تب حصہ پاتے ہیں جب اوپر کے قریبی وارث نہ ہوں۔',
+ res:'نتیجہ',dist:'وارثوں میں تقسیم ہونے والی رقم',
+ bTotal:'کل ترکہ',bFuneral:'تجہیز و تکفین',bDebts:'قرض',bWill:'وصیت (حد: ایک تہائی)',bNet:'تقسیم کے لیے',
+ parts:n=>`ترکہ ${n} حصوں میں تقسیم ہوا۔`,unit:'حصے',each:'فی کس',
+ how:{f:'فرض',a:'عصبہ',fa:'فرض + عصبہ',r:'ردّ'},
+ blockedT:'جنہیں حصہ نہیں ملے گا',notesT:'حساب کے اصول',limitsT:'اس ایپ کی حدود',
+ limits:'یہ ایپ ان صورتوں کو شامل نہیں کرتی: پیٹ کا بچہ (حمل)، لاپتہ شخص، پرپوتا جیسے دور کے اجداد اور اولاد، ذوی الارحام، اور وہ صورت جس میں کوئی وارث قتل یا دین کے فرق سے محروم ہو۔ ایسی صورت میں عالم سے رجوع کریں۔',
+ disc:'یہ حساب صرف اندازہ ہے۔ اصل تقسیم سے پہلے کسی مستند مفتی یا عالم سے تصدیق ضرور کروائیں۔',
+ copy:'نتیجہ کاپی کریں',copied:'کاپی ہو گیا',copyFail:'کاپی نہیں ہوا۔ نیچے سے خود کاپی کریں۔',
+ willWarn:'وصیت ایک تہائی سے زیادہ تھی، اس لیے صرف تہائی تک لی گئی۔',
+ needEstate:'رقم دیکھنے کے لیے کل ترکہ درج کریں۔',minus:'کم کریں',plus:'زیادہ کریں',
+ k:{husband:'شوہر',wife:'بیوی (بیویاں)',son:'بیٹا',dau:'بیٹی',gson:'پوتا (بیٹے کا بیٹا)',gdau:'پوتی (بیٹے کی بیٹی)',father:'والد',mother:'والدہ',gfather:'دادا',gmotherP:'دادی (والد کی ماں)',gmotherM:'نانی (والدہ کی ماں)',fbro:'حقیقی بھائی',fsis:'حقیقی بہن',cbro:'علاتی بھائی (صرف باپ شریک)',csis:'علاتی بہن (صرف باپ شریک)',ubro:'اخیافی بھائی (صرف ماں شریک)',usis:'اخیافی بہن (صرف ماں شریک)',fbroSon:'حقیقی بھائی کا بیٹا',cbroSon:'علاتی بھائی کا بیٹا',funcle:'حقیقی چچا',cuncle:'علاتی چچا (باپ کا علاتی بھائی)',funcleSon:'حقیقی چچا کا بیٹا'},
+ why:{son:'بیٹا موجود ہے',maleDesc:'بیٹا یا پوتا موجود ہے',desc:'اولاد موجود ہے',father:'والد موجود ہیں',gfather:'دادا موجود ہیں (امام ابوحنیفہؒ کے قول پر)',mother:'والدہ موجود ہیں',twoDau:'دو یا زیادہ بیٹیاں موجود ہیں',fbro:'حقیقی بھائی موجود ہے',fsisMag:'حقیقی بہن بیٹیوں کے ساتھ عصبہ بن گئی',twoFsis:'دو حقیقی بہنیں 2/3 لے چکی ہیں',nearer:'قریبی عصبہ موجود ہیں',noResidue:'فرض حصوں کے بعد کچھ نہیں بچا'},
+ n:{
+  spouse:p=>p.who==='husband'?`شوہر کا حصہ ${p.f}: ${p.desc?'مرحومہ کی اولاد موجود ہے':'مرحومہ کی کوئی اولاد نہیں'}۔`:`بیوی (بیویوں) کا کل حصہ ${p.f}: ${p.desc?'مرحوم کی اولاد موجود ہے':'مرحوم کی کوئی اولاد نہیں'}۔`,
+  mother6:p=>p.why==='desc'?'والدہ کو 1/6: مرحوم کی اولاد موجود ہے۔':'والدہ کو 1/6: دو یا زیادہ بھائی بہن موجود ہیں (چاہے انہیں حصہ نہ ملے)۔',
+  umar:()=>'والدہ کو زوج کا حصہ نکالنے کے بعد باقی کا 1/3، کیونکہ صرف والدین اور زوج وارث ہیں۔',
+  fa6:()=>'والد (یا دادا) کو 1/6: بیٹا یا پوتا موجود ہے۔',
+  faA:()=>'والد (یا دادا) کو 1/6 اور بچی ہوئی رقم بھی عصبہ کے طور پر، کیونکہ صرف بیٹی یا پوتی ہے۔',
+  faO:()=>'والد (یا دادا) عصبہ ہیں: فرض حصوں کے بعد باقی سب انہیں ملتا ہے۔',
+  aul:p=>`حصوں کا مجموعہ ${p.f} (ایک سے زیادہ) تھا، اس لیے "عول" کے تحت سب حصے یکساں نسبت سے کم کیے گئے۔`,
+  radd:()=>'حصے پورے نہ ہونے سے بچی ہوئی رقم زوج کے سوا باقی فرض والوں کو ان کے حصوں کے تناسب سے واپس (ردّ) کی گئی۔',
+  raddSpouse:()=>'کوئی اور وارث نہ ہونے سے باقی رقم بھی زوج کو دی گئی۔',
+  noHeirs:()=>'کوئی وارث نہیں چنا گیا۔ اس صورت میں ذوی الارحام یا بیت المال کا مسئلہ ہوتا ہے، کسی عالم سے پوچھیں۔'
+ }}
+};
+
+const PROJ={
+ur:['پروجیکٹ','مفتی سردار محمد جدون الاشرفی','بانی و مہتمم جامعۃ الإعزاز، ملک آباد گدون، ٹوپی، صوابی، خیبر پختونخوا، پاکستان'],
+ar:['مشروع','مفتي سردار محمد جدون الأشرفي','مؤسس ومدير جامعة الإعزاز، ملك آباد جدون، توپي، صوابي، خيبر بختونخوا، باكستان'],
+en:['A project of','Mufti Sardar Muhammad Jadoon Al-Ashrafi','Founder & Director, Jamia Al-I\'zaz, Malik Abad Gadoon, Topi, Swabi, Khyber Pakhtunkhwa, Pakistan'],
+ro:['Project','Mufti Sardar Muhammad Jadoon Al-Ashrafi','Bani o Muhtamim, Jamia Al-I\'zaz, Malik Abad Gadoon, Topi, Swabi, Khyber Pakhtunkhwa, Pakistan']};
+const DEVN={ur:'مفتی اویس رحمان جدون',ar:'مفتي أويس رحمان جدون',en:'Mufti Awais Rahman Jadoon',ro:'Mufti Awais Rahman Jadoon'};
+const DEV={ro:'Developer',en:'Developed by',ur:'ڈیولپر',ar:'المطوّر'};
+const KICK={ro:'Ilm-ul-Faraid',en:'Ilm al-Faraid',ur:'علم الفرائض',ar:'علم الفرائض'};
+const $=s=>document.querySelector(s);
+const app=$('#app');
+const MAXN={husband:1,wife:4,father:1,mother:1,gfather:1,gmotherP:1,gmotherM:1};
+const GROUPS=[['spouse',['husband','wife']],['children',['son','dau','gson','gdau']],['parents',['father','mother','gfather','gmotherP','gmotherM']],['sibs',['fbro','fsis','cbro','csis','ubro','usis']],['far',['fbroSon','cbroSon','funcle','cuncle','funcleSon']]];
+const blankN=()=>Object.fromEntries(KEYS.map(k=>[k,0]));
+const S={lang:'ro',sex:'M',demo:true,estate:12000000,funeral:100000,debts:500000,will:0,n:{...blankN(),wife:1,son:2,dau:1,father:1,mother:1}};
+try{const l=localStorage.getItem('miras-lang');if(l&&T[l])S.lang=l;}catch(e){}
+const nf=new Intl.NumberFormat('en-IN',{maximumFractionDigits:0});
+const fmt=x=>'Rs '+nf.format(Math.round(x));
+const esc=s=>String(s).replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
+
+const LET={
+ur:{n:'جامعۃ الاعزاز، ملک آباد گدون',a:'ملک آباد گدون، ٹوپی، صوابی، خیبر پختونخوا، پاکستان',r:'بانی و مہتمم',m:'مفتی سردار محمد جدون الاشرفی',d:'تاریخ',loc:'ur-PK'},
+ar:{n:'جامعة الإعزاز',a:'ملك آباد جدون، توپي، صوابي، خيبر بختونخوا، باكستان',r:'المؤسس والمدير',m:'المفتي سردار محمد جدون الأشرفي',d:'التاريخ',loc:'ar'},
+en:{n:"Jamia Al-I'zaz",a:'Malik Abad Gadoon, Topi, Swabi, Khyber Pakhtunkhwa, Pakistan',r:'Founder & Director',m:'Mufti Sardar Muhammad Jadoon Al-Ashrafi',d:'Date',loc:'en-GB'},
+ro:{n:"Jamia Al-I'zaz",a:'Malik Abad Gadoon, Topi, Swabi, Khyber Pakhtunkhwa, Pakistan',r:'Bani o Muhtamim',m:'Mufti Sardar Muhammad Jadoon Al-Ashrafi',d:'Tareekh',loc:'en-GB'}};
+function stampDate(){
+  const L=LET[S.lang];let d='';
+  try{d=new Date().toLocaleDateString(L.loc,{day:'numeric',month:'long',year:'numeric'});}catch(e){d=new Date().toDateString();}
+  document.querySelectorAll('.lh-date').forEach(el=>{el.textContent=L.d+': '+d;});
+}
+window.addEventListener('beforeprint',stampDate);
+function rowHTML(k){
+  const t=T[S.lang];
+  return `<div class="heir-row${S.n[k]>0?' on':''}" id="r-${k}"><span class="heir-name">${t.k[k]}</span><span class="stepper"><button type="button" data-act="step" data-k="${k}" data-d="-1" aria-label="${t.minus}: ${esc(t.k[k])}">−</button><span class="count number" id="v-${k}">${S.n[k]}</span><button type="button" data-act="step" data-k="${k}" data-d="1" aria-label="${t.plus}: ${esc(t.k[k])}">+</button></span></div>`;
+}
+function fldHTML(id,label){
+  return `<div class="field"><label for="${id}">${label}</label><input id="${id}" data-num="1" type="text" inputmode="numeric" autocomplete="off" placeholder="0" value="${S[id]||''}"><small id="h-${id}">${S[id]?fmt(S[id]):''}</small></div>`;
+}
+function heading(num,title,cls){
+  return `<div class="section-heading${cls?' '+cls:''}"><div class="section-number">${num}</div><div><h2>${title}</h2></div></div>`;
+}
+function render(){
+  const t=T[S.lang],x2=X[S.lang];
+  app.className='app '+S.lang;app.dir=t.dir;app.lang=t.htmlLang;
+  const groups=GROUPS.map(([g,ks])=>{
+    const vis=ks.filter(k=>!(k==='husband'&&S.sex==='M')&&!(k==='wife'&&S.sex==='F'));
+    const rows=vis.map(rowHTML).join('');
+    if(g==='far'){
+      const open=ks.some(k=>S.n[k]>0)?' open':'';
+      return `<details class="far"${open}><summary>${t.g.far}</summary><p class="hint">${t.farHint}</p><div class="heirs">${rows}</div></details>`;
+    }
+    return `<div class="group-title">${t.g[g]}</div><div class="heirs">${rows}</div>`;
+  }).join('');
+  const sexBtn=(v,label,icon)=>`<button type="button" class="gender-option${S.sex===v?' selected':''}" data-act="sex" data-v="${v}" aria-pressed="${S.sex===v}"><span class="gender-icon" aria-hidden="true">${icon}</span><strong>${label}</strong></button>`;
+  const L=LET[S.lang];
+  app.innerHTML=`
+  <div class="letterhead print-only"><div class="lh-brand"><img class="lh-logo" src="icons/jamia-logo.png" alt="" width="46" height="46"><div class="lh-name">${L.n}</div></div><div class="lh-rule"></div><div class="lh-row"><span class="lh-title">${t.name} · ${t.res}</span><span class="lh-date"></span></div></div>
+  <header class="hero"><div class="hero-content">
+    <div class="topbar"><div class="logo logo-img"><img src="icons/jamia-logo.png" alt="${LET[S.lang].n}" width="80" height="80"></div>
+      <nav class="lang-switch" role="group" aria-label="Language">${[['ur','اردو'],['ar','العربية'],['en','English'],['ro','Roman']].map(([v,l])=>`<button type="button" data-act="lang" data-v="${v}" aria-pressed="${S.lang===v}">${l}</button>`).join('')}</nav></div>
+    <div class="eyebrow">${KICK[S.lang]}</div>
+    <h1>${t.name}</h1>
+    ${(S.lang==='ur'||S.lang==='ar')?`<div class="english-name">I'ZAZ AL-MIRATH</div>`:''}
+    <div class="hero-rule"></div>
+  </div></header>
+  ${S.demo?`<div class="demo" id="demo"><span>${t.demo}</span><button type="button" class="link" data-act="reset">${t.reset}</button></div>`:''}
+  ${heading('01',t.s1,'pre')}
+  <section class="card step pre"><div class="gender-grid" role="group">${sexBtn('M',t.male,'◈')}${sexBtn('F',t.female,'❋')}</div></section>
+  ${heading('02',t.s2,'pre')}
+  <section class="card step pre">${fldHTML('estate',t.estate)}<div class="input-grid">${fldHTML('funeral',t.funeral)}${fldHTML('debts',t.debts)}</div>${fldHTML('will',t.will)}</section>
+  ${heading('03',t.s3,'pre')}
+  <section class="card step pre">${groups}</section>
+  <table class="pw" role="presentation"><thead><tr><td><div class="pw-h"></div></td></tr></thead><tfoot><tr><td><div class="pw-f"></div></td></tr></tfoot><tbody><tr><td><section id="result" aria-live="polite"></section></td></tr></tbody></table>
+  <div class="letterfoot print-only"><div class="lf-rule"></div><div class="lf-name"><bdi>${L.m}</bdi></div><div class="lf-line"><bdi>${L.r}</bdi> · <bdi>${L.a}</bdi></div></div>
+  <footer class="footer"><div class="credit-card"><span class="credit-label">${PROJ[S.lang][0]}</span><strong class="credit-name"><bdi>${PROJ[S.lang][1]}</bdi></strong><span class="credit-line"><bdi>${PROJ[S.lang][2]}</bdi></span></div><div class="credit-card"><span class="credit-label">${DEV[S.lang]}</span><strong class="credit-name"><bdi>${DEVN[S.lang]}</bdi></strong><span class="credit-line"><bdi dir="ltr">Awaisrahmanjadoon@gmail.com</bdi></span><span class="credit-line"><bdi dir="ltr">03139190497</bdi></span></div><p class="privacy"><a href="privacy.html">${x2.priv}</a></p></footer>
+  <div class="sticky-bar"><div class="sticky-inner"><div class="sticky-info"><strong id="stkAmt"></strong><span>${t.dist}</span></div><button type="button" class="btn btn-primary" data-act="goresult">${x2.go}</button></div></div>`;
+  renderResult();stampDate();
+}
+
+let lastText='';
+
+function renderResult(){
+  const t=T[S.lang],x2=X[S.lang];
+  const r=calc(S.n,S.sex);
+  const net=Math.max(0,S.estate-S.funeral-S.debts);
+  const cap=Math.floor(net/3);
+  const willAmt=Math.min(S.will,cap);
+  const dist=net-willAmt;
+  const hasMoney=S.estate>0;
+  const lines=[];
+  let html=heading('04',t.res);
+  if(hasMoney){
+    const parts=[[t.bTotal,fmt(S.estate)]];
+    if(S.funeral)parts.push([t.bFuneral,'− '+fmt(S.funeral)]);
+    if(S.debts)parts.push([t.bDebts,'− '+fmt(S.debts)]);
+    if(willAmt)parts.push([t.bWill,'− '+fmt(willAmt)]);
+    html+=`<div class="result-hero"><div class="label">${t.dist}</div><div class="amount">${fmt(dist)}</div><div class="result-summary">${parts.map(([a,b])=>`<div><small>${a}</small><strong>${b}</strong></div>`).join('')}</div></div>`;
+    if(S.will>cap)html+=`<div class="warnbox">${t.willWarn}</div>`;
+    lines.push(`${t.dist}: ${fmt(dist)}`);
+  }else html+=`<div class="result-hero"><div class="label">${t.needEstate}</div></div>`;
+  const sa=$('#stkAmt');if(sa)sa.textContent=hasMoney?fmt(dist):'—';
+  if(!r.empty){
+    html+=`<p class="parts">${t.parts(r.N)}</p>`;
+    html+=`<div class="share-bar" role="img" aria-label="${t.res}">${r.rows.map((x,i)=>`<span style="flex:${x.share.n/x.share.d} 1 0;background:var(--c${i%6})"></span>`).join('')}</div>`;
+    html+=`<div class="legend">${r.rows.map((x,i)=>`<span><i class="dot" style="background:var(--c${i%6})"></i>${t.k[x.k]}</span>`).join('')}</div>`;
+    html+=r.rows.map((x,i)=>{
+      const pct=x.share.n/x.share.d*100;
+      const amt=dist*x.share.n/x.share.d;
+      const per=amt/x.count;
+      const frac=`${x.share.n}/${x.share.d}`;
+      lines.push(`${t.k[x.k]}${x.count>1?' x'+x.count:''}: ${frac}${hasMoney?' = '+fmt(amt):''}`);
+      const cls=x.how==='f'?'tag-fard':x.how==='r'?'tag-radd':'tag-asaba';
+      const third=(x.count>1&&hasMoney)?`<div><small>${t.each}</small><strong>${fmt(per)}</strong></div>`:`<div><small>%</small><strong>${pct.toFixed(1)}</strong></div>`;
+      return `<section class="card heir-card"><div class="heir-card-top"><div><h3>${t.k[x.k]}${x.count>1?` <span class="cnt">× ${x.count}</span>`:''}</h3><span class="type-tag ${cls}">${t.how[x.how]}</span></div><div class="fraction">${frac}</div></div><div class="heir-data"><div><small>${x2.amtL}</small><strong>${hasMoney?fmt(amt):'—'}</strong></div><div><small>${t.unit}</small><strong>${x.parts}</strong></div>${third}</div>${dalilHtml(x,S.n)}</section>`;
+    }).join('');
+  }
+  if(!r.empty&&r.rows.some(x=>x.count>1)){
+    const lcm=(a,b)=>a/gcd(a,b)*b;
+    const fac=r.rows.reduce((l,x)=>lcm(l,x.count/gcd(x.parts,x.count)),1);
+    const TT=r.N*fac;
+    html+=`<section class="card"><h3 class="card-title">${x2.tashihT}</h3><p style="margin:0;font-size:13px">${x2.tashih(TT)}</p><div class="table-wrap"><table class="tashih-table"><thead><tr><th>${x2.th[0]}</th><th>${x2.th[1]}</th><th>${x2.th[2]}</th></tr></thead><tbody>${r.rows.map(x=>`<tr><td>${t.k[x.k]}</td><td>${x.count}</td><td>${x.parts*fac/x.count} / ${TT}</td></tr>`).join('')}</tbody></table></div></section>`;
+    lines.push(x2.tashih(TT));
+    r.rows.forEach(x=>lines.push(`${t.k[x.k]}: ${x.parts*fac/x.count} / ${TT}`));
+  }
+  if(r.blocked.length)html+=`<section class="card"><h3 class="card-title">${t.blockedT}</h3><div class="blocked-list">${r.blocked.map(b=>`<div class="blocked-item"><b>${t.k[b.k]}</b><span>${t.why[b.why]}</span></div>`).join('')}</div></section>`;
+  if(r.notes.length)html+=`<section class="card"><h3 class="card-title">${t.notesT}</h3><ul>${r.notes.map(x=>`<li>${t.n[x.c](x.p||{})}</li>`).join('')}</ul></section>`;
+  if(!r.empty)html+=`<section class="card noprint"><div class="actions"><button type="button" class="btn btn-primary" data-act="copy">${t.copy}</button><button type="button" class="btn btn-gold" data-act="share">${x2.share}</button><button type="button" class="btn" data-act="print">${x2.print}</button><span id="cstatus" role="status"></span></div><textarea id="copybox" readonly hidden aria-label="${t.copy}"></textarea></section>`;
+  lastText=lines.join('\n');
+  $('#result').innerHTML=html;
+}
+
+function touched(){if(S.demo){S.demo=false;const d=$('#demo');if(d)d.remove();}}
+function reset(){
+  S.sex='M';S.estate=0;S.funeral=0;S.debts=0;S.will=0;S.n=blankN();S.demo=false;render();
+}
+app.addEventListener('click',e=>{
+  const b=e.target.closest('[data-act]');if(!b)return;
+  const a=b.dataset.act,t=T[S.lang];
+  if(a==='step'){
+    const k=b.dataset.k;
+    S.n[k]=Math.min(MAXN[k]??30,Math.max(0,S.n[k]+Number(b.dataset.d)));
+    $('#v-'+k).textContent=S.n[k];$('#r-'+k).classList.toggle('on',S.n[k]>0);touched();renderResult();
+  }else if(a==='sex'){
+    if(S.sex===b.dataset.v)return;
+    S.sex=b.dataset.v;
+    if(S.sex==='F'){S.n.wife=0;S.n.husband=1;}else{S.n.husband=0;S.n.wife=1;}
+    touched();render();
+  }else if(a==='lang'){
+    S.lang=b.dataset.v;try{localStorage.setItem('miras-lang',S.lang);}catch(err){}
+    render();
+  }else if(a==='reset'){reset();}
+  else if(a==='goresult'){$('#result').scrollIntoView({behavior:'smooth'});}
+  else if(a==='print'){window.print();}
+  else if(a==='share'){
+    const msg=`${t.name}\n\n${lastText}\n\n${PROJ[S.lang][1]}`;
+    window.open('https://wa.me/?text='+encodeURIComponent(msg),'_blank','noopener');
+  }
+  else if(a==='copy'){
+    const st=$('#cstatus'),box=$('#copybox');
+    const fallback=()=>{box.hidden=false;box.value=lastText;box.focus();box.select();st.textContent=t.copyFail;};
+    try{
+      navigator.clipboard.writeText(lastText).then(()=>{st.textContent=t.copied;},fallback);
+    }catch(err){fallback();}
+  }
+});
+app.addEventListener('input',e=>{
+  const el=e.target;if(!el.dataset||!el.dataset.num)return;
+  const digits=el.value.replace(/\D/g,'').slice(0,12);
+  if(digits!==el.value)el.value=digits;
+  S[el.id]=Number(digits)||0;
+  const h=$('#h-'+el.id);if(h)h.textContent=S[el.id]?fmt(S[el.id]):'';
+  touched();renderResult();
+});
+render();
+</script>
+<script>
+if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){});});}
+</script>
+</body>
+</html>
